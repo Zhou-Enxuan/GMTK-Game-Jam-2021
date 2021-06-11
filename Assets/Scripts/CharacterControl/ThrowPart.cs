@@ -44,10 +44,10 @@ public class ThrowPart : MonoBehaviour
             Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
             if (Input.GetKey(KeyCode.Q))
             {
-                GetComponent<CharacterMovement>().isConnecting = true;
-                //GetComponent<Rigidbody2D>().velocity = (partDirection * 500 * Time.deltaTime);
-                Vector2.MoveTowards(transform.position, breakPart.transform.position, 500);
                 GetComponent<Rigidbody2D>().gravityScale = 0;
+                GetComponent<CharacterMovement>().isConnecting = true;
+                GetComponent<Rigidbody2D>().AddForce(partDirection * 200);
+                
                 Debug.Log("is click");
             }
 
@@ -67,5 +67,13 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().breakpart = breakPart.transform;
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce);
         myBodyPart.gameObject.SetActive(false);
+    }
+
+    public void pickPart()
+    {
+        myBodyPart.gameObject.SetActive(true);
+        GetComponent<CharacterMovement>().isConnecting = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7569651803302991943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.39635, y: 0.39635, z: 0.39635}
   m_Children:
   - {fileID: 7569651803721097439}
   - {fileID: 7569651803521647597}
@@ -99,6 +99,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   isConnecting: 0
+  breakpart: {fileID: 0}
 --- !u!114 &7569651803302991948
 MonoBehaviour:
   m_ObjectHideFlags: 0
