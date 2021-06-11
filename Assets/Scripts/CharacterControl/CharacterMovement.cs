@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool isConnecting;
 
-
+    public Transform breakpart;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +53,10 @@ public class CharacterMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
+    }
+
+    public void Respond(Vector2 respondPoint)
+    {
+        transform.position = respondPoint;
     }
 }
