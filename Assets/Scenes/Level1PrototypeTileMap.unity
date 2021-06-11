@@ -262,6 +262,110 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1109801292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7569651802977755959, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Name
+      value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: lunchForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651804204942534, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651804378777362, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651804407670176, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651804790744336, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651805000924938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 652e25902f92647a3a56f747fc421508, type: 3}
 --- !u!1 &1720278890
 GameObject:
   m_ObjectHideFlags: 0

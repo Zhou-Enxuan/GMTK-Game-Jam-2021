@@ -8,11 +8,14 @@ public class HandBehavior : MonoBehaviour
 
     private bool isHit;
 
+    private bool isPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
+        isPlayer = false;
     }
 
     // Update is called once per frame
@@ -29,7 +32,13 @@ public class HandBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && isHit)
+        {
+            collision.transform.GetComponent<ThrowPart>().pickPart();
+            Destroy(this.gameObject);
+        }
+
+        if(!collision.transform.CompareTag("Player"))
         {
             Debug.Log("isHit");
             isHit = true;

@@ -17,6 +17,7 @@ public class ThrowPart : MonoBehaviour
     // Start is called before the first frame update
 
     private GameObject breakPart;
+
     void Start()
     {
         myBodyPart = transform.Find(partToThrow.name);
@@ -40,23 +41,39 @@ public class ThrowPart : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Q))
+            Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
+            if (Input.GetKey(KeyCode.Q))
             {
+                GetComponent<Rigidbody2D>().gravityScale = 0;
                 GetComponent<CharacterMovement>().isConnecting = true;
-                Vector3.MoveTowards(transform.position, breakPart.transform.position, 0.1f);
+                GetComponent<Rigidbody2D>().AddForce(partDirection * 200);
+                
+                Debug.Log("is click");
             }
 
-            if(Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(KeyCode.Q))
             {
                 GetComponent<CharacterMovement>().isConnecting = false;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().gravityScale = 1;
             }
         }
+
     }
 
     private void Shoot()
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        breakPart.GetComponent<Rigidbody2D>().velocity = breakPart.transform.right * lunchForce;
+        GetComponent<CharacterMovement>().breakpart = breakPart.transform;
+        breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce);
         myBodyPart.gameObject.SetActive(false);
+    }
+
+    public void pickPart()
+    {
+        myBodyPart.gameObject.SetActive(true);
+        GetComponent<CharacterMovement>().isConnecting = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }
