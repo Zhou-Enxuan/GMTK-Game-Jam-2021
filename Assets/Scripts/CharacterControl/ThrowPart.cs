@@ -64,12 +64,18 @@ public class ThrowPart : MonoBehaviour
             {
                 GetComponent<CharacterMovement>().isConnecting = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                GetComponent<Rigidbody2D>().gravityScale = 1;
+                GetComponent<Rigidbody2D>().gravityScale = 10;
                 if (GetComponent<CharacterMovement>().isGrounded)
                 { 
                     canRetract = true;
                 }   
 
+            }
+
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pickPart();
+                Destroy(breakPart.gameObject);
             }
         }
 
@@ -87,16 +93,16 @@ public class ThrowPart : MonoBehaviour
         myBodyPart.gameObject.SetActive(true);
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().gravityScale = 1;
+        GetComponent<Rigidbody2D>().gravityScale = 10;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.transform.CompareTag("Hand"))
+        if (collision.transform.CompareTag("Ground"))
         {
             GetComponent<CharacterMovement>().isConnecting = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().gravityScale = 10;
             canRetract = false;
         }
     }

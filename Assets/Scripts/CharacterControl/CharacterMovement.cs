@@ -4,64 +4,6 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    //[SerializeField]
-    //private float speed;
-    //[SerializeField]
-    //private float jumpfroce;
-
-    //private float moveInput;
-    //[SerializeField]
-    //private Rigidbody2D rb;
-
-    //[SerializeField]
-    //private Transform groundCheck;
-
-    //[SerializeField]
-    //private float checkRadius;
-
-    //[SerializeField]
-    //private LayerMask whatIsGround;
-
-    //public bool isGrounded;
-
-    //public bool isConnecting;
-
-    //public Transform breakpart;
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    isConnecting = false;
-    //}
-
-    //private void Update()
-    //{
-    //    if (!isConnecting)
-    //    {
-    //        moveInput = Input.GetAxis("Horizontal");
-
-    //        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-    //        {
-    //            Debug.Log(isGrounded);
-
-    //            rb.velocity = new Vector2(rb.velocity.x, 0);
-    //            rb.AddForce(Vector2.up * jumpfroce);
-    //        }
-    //    }
-    //}
-
-    //// Update is called once per frame
-    //void FixedUpdate()
-    //{
-    //    isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-    //    rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
-    //}
-
-    //public void Respond(Vector2 respondPoint)
-    //{
-    //    transform.position = respondPoint;
-    //}
 
     [Header("Components")]
     private Rigidbody2D rb;
@@ -75,11 +17,13 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Jump Variables")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private float airLinearDrag; 
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float checkRadius;
+    [SerializeField] private float airLinearDrag;
+
+
+    [Header("Ground Collision Variables")]
+    [SerializeField] private float grpundRaycastLength;
     [SerializeField] private LayerMask whatIsGround;
-    private bool canJump => Input.GetKeyDown(KeyCode.W) && isGrounded;
+    private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
     public bool isGrounded;
 
 
@@ -92,19 +36,19 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        CheckCollision();
         horizontalDirection = GetInput().x;
+        if (canJump)
+        {
+            Jump();
+        }
     }
 
     private void FixedUpdate()
     {
-        CheckCollision();
         if(!isConnecting)
         {
             MoveCharacter();
-            if (canJump)
-            {
-                Jump();
-            }
             if(isGrounded)
             {
                 ApplyLinearDrag();
@@ -138,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
         {
             rb.drag = linearDrag;
         }
-        else
+        else 
         {
             rb.drag = 0f;
         }
@@ -147,16 +91,27 @@ public class CharacterMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up *  jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
 
     private void CheckCollision()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * grpundRaycastLength);
     }
 
     private void ApplyAirLinearDrag()
     {
         rb.drag = airLinearDrag;
+    }
+
+    public void Respond(Vector2 respondPoint)
+    {
+        transform.position = respondPoint;
     }
 }
