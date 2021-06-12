@@ -583,6 +583,11 @@ PrefabInstance:
       propertyPath: m_MovementSmoothing
       value: 0.141
       objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: limpingSpeedModifier
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_Name

@@ -100,6 +100,7 @@ public class ThrowPart : MonoBehaviour
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
+        GetComponent<CharacterMovement>().toggleLimping();
         myBodyPart.gameObject.SetActive(false);
     }
 
@@ -130,6 +131,7 @@ public class ThrowPart : MonoBehaviour
             case 2:
                 partToThrow = Resources.Load<GameObject>("Prefab/Character/Part/RightLeg");
                 myBodyPart = transform.Find("RightLeg");
+                Callback = ShootLeg;
                 break;
             default:
                 break;
@@ -182,7 +184,9 @@ public class ThrowPart : MonoBehaviour
     //After you stand up on the leg platform, the next jump brought your leg back
     private void pickUpLeg()
     {
-        
+        if(!GetComponent<CharacterMovement>().isLimping){
+            GetComponent<CharacterMovement>().toggleLimping();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

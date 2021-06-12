@@ -15,9 +15,11 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float linearDrag;
+    [SerializeField] private float limpingSpeedModifier = 0.5f;
     private float horizontalDirection;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
+    public bool isLimping = false;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
     [Header("Jump Variables")]
@@ -81,7 +83,11 @@ public class CharacterMovement : MonoBehaviour
     private void MoveCharacter()
     {
         float movement = horizontalDirection * movementSpeed * Time.fixedDeltaTime;
+        if(isLimping){
+            movement = movement * limpingSpeedModifier;
+        }
         Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
+
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
@@ -121,11 +127,6 @@ public class CharacterMovement : MonoBehaviour
         rb.drag = airLinearDrag;
     }
 
-    public void Respawn(Vector2 respondPoint)
-    {
-        transform.position = respondPoint;
-    }
-
     private void Running()
     {
         if(transform.localScale.x > 0)
@@ -157,8 +158,8 @@ public class CharacterMovement : MonoBehaviour
     //shoot off the leg
     //***NEED TO BE IMPLEMENT***
     //Slow down player movement
-    private void limping()
+    public void toggleLimping()
     {
-
+        isLimping = !isLimping;
     }
 }
