@@ -131,7 +131,7 @@ public class CharacterMovement : MonoBehaviour
         transform.position = respondPoint;
     }
 
-    public void Running()
+    private void Running()
     {
         if(transform.localScale.x > 0)
         {
@@ -151,5 +151,14 @@ public class CharacterMovement : MonoBehaviour
                 rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
             }
         }
+    }
+
+
+    //shoot off the leg
+    //***NEED TO BE IMPLEMENT***
+    //Slow down player movement
+    private void limping()
+    {
+
     }
 }
