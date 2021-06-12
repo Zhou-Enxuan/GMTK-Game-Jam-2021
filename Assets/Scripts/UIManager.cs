@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]private Text selectPartText;
     [SerializeField] private GameObject player;
 
+    //Victory Placeholder
+    [SerializeField] private GameObject victoryText;
+
     public int selection;
 
     private string[] partChoose;
@@ -72,5 +75,12 @@ public class UIManager : MonoBehaviour
                 selection = 2;
             }
         }
+    }
+
+    private void WinText()
+    {
+
+        victoryText.SetActive(true);
+
     }
 }
