@@ -44,19 +44,21 @@ public class ThrowPart : MonoBehaviour
         {
             if (myBodyPart.name == "RightHand")
             {
-                Vector2 partPosition = partToThrow.transform.position;
+                Vector2 partPosition = myBodyPart.transform.position;
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 direction = mousePosition - partPosition;
-                if (transform.localScale.x > 0)
+                if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < 45)
                 {
                     myBodyPart.right = direction;
                 }
-                else
+                else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < 45)
                 {
                     myBodyPart.right = -direction;
                 }
+                
 
             }
+
             else
             {
                 if (transform.localScale.x > 0)
