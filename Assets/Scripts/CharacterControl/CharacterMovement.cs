@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField]
+    private Vector2 respawnPoint;
+
+    [SerializeField]
     private float speed;
     [SerializeField]
     private float jumpfroce;
@@ -55,8 +58,9 @@ public class CharacterMovement : MonoBehaviour
         rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
     }
 
-    public void Respond(Vector2 respondPoint)
+    public void Respawn()
     {
-        transform.position = respondPoint;
+        rb.velocity = Vector2.zero;
+        transform.position = respawnPoint;
     }
 }
