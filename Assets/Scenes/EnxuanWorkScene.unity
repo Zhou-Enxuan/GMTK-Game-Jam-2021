@@ -690,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: jumpForce
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -713,6 +713,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7154943067633851054, guid: e0c770d0bb62e400cb67d2f450a87258,
         type: 3}
+    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.762
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.461
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651804204942534, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture

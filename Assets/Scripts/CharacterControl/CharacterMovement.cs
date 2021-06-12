@@ -81,7 +81,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Ground Collision Variables")]
     [SerializeField] private float grpundRaycastLength;
     [SerializeField] private LayerMask whatIsGround;
-    private bool canJump => Input.GetKeyDown(KeyCode.W) && isGrounded;
+    private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
     public bool isGrounded;
 
 
