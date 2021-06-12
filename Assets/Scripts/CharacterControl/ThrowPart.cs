@@ -80,6 +80,8 @@ public class ThrowPart : MonoBehaviour
     private void ShootArm()
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakPart.GetComponent<HandBehavior>().player = gameObject;
+        GetComponent<CharacterMovement>().startMagneticPull(breakPart, breakPart.GetComponent<HandBehavior>().magneticForce);
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
         myBodyPart.gameObject.SetActive(false);
     }
@@ -88,7 +90,7 @@ public class ThrowPart : MonoBehaviour
     private void ShootHead()
     {
         myBodyPart.gameObject.SetActive(false);
-        GetComponent<CharacterMovement>().isOutControl = true;
+        GetComponent<CharacterMovement>().isOutControl = true; 
         StartCoroutine(HeadBackCount());
 
     }
@@ -98,7 +100,10 @@ public class ThrowPart : MonoBehaviour
     //Shoot the leg at horizontallly and when the leg hit a collider it freeze and become platfrom to jump on
     private void ShootLeg()
     {
-
+        breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
+        GetComponent<CharacterMovement>().toggleLimping();
+        myBodyPart.gameObject.SetActive(false);
     }
 
     //pick up the hand after the player collide with the hand
@@ -108,6 +113,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 10;
+        GetComponent<CharacterMovement>().stopMagneticPull();
     }
 
     //check which selection we have and set up the correct behavior
@@ -128,6 +134,7 @@ public class ThrowPart : MonoBehaviour
             case 2:
                 partToThrow = Resources.Load<GameObject>("Prefab/Character/Part/RightLeg");
                 myBodyPart = transform.Find("RightLeg");
+                Callback = ShootLeg;
                 break;
             default:
                 break;
@@ -139,14 +146,13 @@ public class ThrowPart : MonoBehaviour
     private void Retract()
     {
         Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
-        Debug.Log(partDirection);
+        //Debug.Log(partDirection);
         Debug.DrawRay(transform.position, partDirection, Color.red);
         if (Input.GetMouseButton(1) && canRetract)
         {
             transform.position = Vector2.Lerp(transform.position, breakPart.transform.position, retractAcce * Time.deltaTime);
             GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<CharacterMovement>().isConnecting = true;
-            Debug.Log("q is down");
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -180,7 +186,9 @@ public class ThrowPart : MonoBehaviour
     //After you stand up on the leg platform, the next jump brought your leg back
     private void pickUpLeg()
     {
-        
+        if(!GetComponent<CharacterMovement>().isLimping){
+            GetComponent<CharacterMovement>().toggleLimping();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

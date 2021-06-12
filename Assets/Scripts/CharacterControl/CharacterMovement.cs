@@ -9,11 +9,21 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Movement variables")]
-    [SerializeField] private float movementAcceelertion;
+    
+    [SerializeField]
+    private GameObject respawnPoint;
+    [SerializeField] private float movementSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float linearDrag;
+    [SerializeField] private float limpingSpeedModifier = 0.5f;
     private float horizontalDirection;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
+    private Vector3 m_Velocity = Vector3.zero;
+    public bool isLimping = false;
+
+    private GameObject magneticCenter;
+    private float magneticForce;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
     [Header("Jump Variables")]
     [SerializeField] private float jumpForce;
@@ -51,6 +61,7 @@ public class CharacterMovement : MonoBehaviour
         if(!isConnecting && !isOutControl)
         {
             MoveCharacter();
+            checkMagneticPull();
             if(isGrounded)
             {
                 ApplyLinearDrag();
@@ -75,21 +86,15 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementAcceelertion);
+        float movement = horizontalDirection * movementSpeed * Time.fixedDeltaTime;
+        if(isLimping){
+            movement = movement * limpingSpeedModifier;
+        }
+        Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
-        if(Mathf.Abs(rb.velocity.x) > maxSpeed)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y); 
-        }
 
-        if (horizontalDirection > 0)
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else if (horizontalDirection < 0)
-        {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
-        }
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
     }
 
     private void ApplyLinearDrag()
@@ -126,16 +131,11 @@ public class CharacterMovement : MonoBehaviour
         rb.drag = airLinearDrag;
     }
 
-    public void Respawn(Vector2 respondPoint)
-    {
-        transform.position = respondPoint;
-    }
-
     private void Running()
     {
         if(transform.localScale.x > 0)
         {
-            rb.AddForce(new Vector2(1, 0f) * movementAcceelertion);
+            rb.AddForce(new Vector2(1, 0f) * movementSpeed);
 
             if (Mathf.Abs(rb.velocity.x) > maxSpeed)
             {
@@ -144,7 +144,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            rb.AddForce(new Vector2(-1, 0f) * movementAcceelertion);
+            rb.AddForce(new Vector2(-1, 0f) * movementSpeed);
 
             if (Mathf.Abs(rb.velocity.x) > maxSpeed)
             {
@@ -153,12 +153,34 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-
-    //shoot off the leg
-    //***NEED TO BE IMPLEMENT***
-    //Slow down player movement
-    private void limping()
+    public void Respawn()
     {
-
+        rb.velocity = Vector2.zero;
+        transform.position = respawnPoint.transform.position;
     }
+
+    public void toggleLimping()
+    {
+        isLimping = !isLimping;
+    }
+
+    private void checkMagneticPull(){
+        if(magneticCenter != null){
+            Vector2 distance = magneticCenter.transform.position - transform.position;
+            if(distance.magnitude > magneticCenter.GetComponent<HandBehavior>().magneticRadius){
+                transform.position = Vector2.Lerp(transform.position, magneticCenter.transform.position, magneticForce * Time.deltaTime);
+            }
+        }
+    }
+
+    public void startMagneticPull(GameObject arm, float mf){
+        magneticCenter = arm;
+        magneticForce = mf;
+    }
+
+    public void stopMagneticPull(){
+        magneticCenter = null;
+    }
+
+
 }
