@@ -20,6 +20,9 @@ public class CharacterMovement : MonoBehaviour
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
+
+    private GameObject magneticCenter;
+    private float magneticForce;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
     [Header("Jump Variables")]
@@ -58,6 +61,7 @@ public class CharacterMovement : MonoBehaviour
         if(!isConnecting && !isOutControl)
         {
             MoveCharacter();
+            checkMagneticPull();
             if(isGrounded)
             {
                 ApplyLinearDrag();
@@ -90,7 +94,7 @@ public class CharacterMovement : MonoBehaviour
 
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
+        //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
     }
 
     private void ApplyLinearDrag()
@@ -155,11 +159,28 @@ public class CharacterMovement : MonoBehaviour
         transform.position = respawnPoint.transform.position;
     }
 
-    //shoot off the leg
-    //***NEED TO BE IMPLEMENT***
-    //Slow down player movement
     public void toggleLimping()
     {
         isLimping = !isLimping;
     }
+
+    private void checkMagneticPull(){
+        Vector2 distance = magneticCenter.transform.position - transform.position;
+        if(magneticCenter != null){
+            if(distance.magnitude > magneticCenter.GetComponent<HandBehavior>().magneticRadius){
+                transform.position = Vector2.Lerp(transform.position, magneticCenter.transform.position, magneticForce * Time.deltaTime);
+            }
+        }
+    }
+
+    public void startMagneticPull(GameObject arm, float mf){
+        magneticCenter = arm;
+        magneticForce = mf;
+    }
+
+    public void stopMagneticPull(){
+        magneticCenter = null;
+    }
+
+
 }

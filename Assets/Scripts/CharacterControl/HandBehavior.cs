@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HandBehavior : MonoBehaviour
 {
+    [SerializeField] public float magneticForce = 0.5f;
+    [SerializeField] public float magneticRadius = 5f;
     private Rigidbody2D rb;
 
     private bool isHit;

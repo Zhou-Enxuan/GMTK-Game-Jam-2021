@@ -80,6 +80,7 @@ public class ThrowPart : MonoBehaviour
     private void ShootArm()
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        GetComponent<CharacterMovement>().startMagneticPull(breakPart, breakPart.GetComponent<HandBehavior>().magneticForce);
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
         myBodyPart.gameObject.SetActive(false);
     }
@@ -111,6 +112,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 10;
+        GetComponent<CharacterMovement>().stopMagneticPull();
     }
 
     //check which selection we have and set up the correct behavior
