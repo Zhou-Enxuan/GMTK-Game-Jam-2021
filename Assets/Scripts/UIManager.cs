@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void WinText()
+    public void WinText()
     {
 
         victoryText.SetActive(true);

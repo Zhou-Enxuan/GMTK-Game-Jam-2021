@@ -22,7 +22,8 @@ public class Victory : MonoBehaviour
         var player = collision.GetComponent<CharacterMovement>();
         if (player == null)
             return;
-        //GameManager.instance
+        GameManager.instance.Win();
+        Debug.Log("you win");
 
     }
 
