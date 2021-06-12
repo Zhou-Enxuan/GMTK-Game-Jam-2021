@@ -20,7 +20,7 @@ public class ThrowPart : MonoBehaviour
     [SerializeField]
     private float retractAcce;
 
-    private GameObject breakPart;
+    public GameObject breakPart;
 
     private bool canRetract;
 
@@ -42,12 +42,12 @@ public class ThrowPart : MonoBehaviour
         checkFunction();
         if (myBodyPart.gameObject.activeSelf)
         {
-            if(myBodyPart.name == "RightHand")
+            if (myBodyPart.name == "RightHand")
             {
                 Vector2 partPosition = partToThrow.transform.position;
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 direction = mousePosition - partPosition;
-                if(transform.localScale.x > 0)
+                if (transform.localScale.x > 0)
                 {
                     myBodyPart.right = direction;
                 }
@@ -55,24 +55,28 @@ public class ThrowPart : MonoBehaviour
                 {
                     myBodyPart.right = -direction;
                 }
-                
+
             }
             else
             {
-                transform.Find("RightHand").rotation = Quaternion.Euler(0f, 0f, -90f);
+                if (transform.localScale.x > 0)
+                {
+                    transform.Find("RightHand").rotation = Quaternion.Euler(0f, 0f, -90f);
+                }
+                else
+                {
+                    transform.Find("RightHand").rotation = Quaternion.Euler(0f, 0f, 90f);
+
+                }
+
             }
-
-
             if(Input.GetMouseButtonDown(0))
             {
                Callback?.Invoke();
             }
         }
-        else
-        {
-            if(breakPart != null)
-                Retract();
-        }
+        if(breakPart != null)
+            Retract();
 
     }
 
@@ -100,16 +104,16 @@ public class ThrowPart : MonoBehaviour
     //Shoot the leg at horizontallly and when the leg hit a collider it freeze and become platfrom to jump on
     private void ShootLeg()
     {
-        breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
-        GetComponent<CharacterMovement>().toggleLimping();
-        myBodyPart.gameObject.SetActive(false);
+        //breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        //breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
+        //GetComponent<CharacterMovement>().toggleLimping();
+        //myBodyPart.gameObject.SetActive(false);
     }
 
     //pick up the hand after the player collide with the hand
     public void pickHand()
     {
-        myBodyPart.gameObject.SetActive(true);
+        transform.Find("RightHand").gameObject.SetActive(true);
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 10;
@@ -171,6 +175,7 @@ public class ThrowPart : MonoBehaviour
         {
             pickHand();
             Destroy(breakPart.gameObject);
+            breakPart = null;
         }
     }
 
