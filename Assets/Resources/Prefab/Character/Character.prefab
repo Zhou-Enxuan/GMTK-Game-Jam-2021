@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051266693699368622}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: LegShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
-  isLimping: 0
+  isLimping: 1
   m_MovementSmoothing: 0.05
   jumpForce: 30
   airLinearDrag: 10
@@ -238,6 +238,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightHand
       objectReference: {fileID: 0}
+    - target: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7154943067862328809, guid: 141bcac15f7f24ed4916fd09d46bb16f,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -272,6 +282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154943067862328812, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3847451325945355113, guid: 141bcac15f7f24ed4916fd09d46bb16f, type: 3}
@@ -698,6 +713,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightLeg
       objectReference: {fileID: 0}
+    - target: {fileID: 4593621989516583205, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593621989516583205, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4593621991489482603, guid: 206f470d0ba374a2ea09834886e6c0e7,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -738,6 +763,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4593621991489482606, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897171354870693447, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7569651803302991943}
     m_RemovedComponents:
     - {fileID: 2010901493642993062, guid: 206f470d0ba374a2ea09834886e6c0e7, type: 3}
     - {fileID: 5388205992829390649, guid: 206f470d0ba374a2ea09834886e6c0e7, type: 3}

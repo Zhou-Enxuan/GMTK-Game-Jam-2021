@@ -586,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: limpingSpeedModifier
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 1953674422}
   m_Layer: 10
   m_Name: Tilemap_Base
-  m_TagString: Ground
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14153,6 +14153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpikePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005862422405066550, guid: c81fab50df7a7244d9d7d328de71b1c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c81fab50df7a7244d9d7d328de71b1c6, type: 3}

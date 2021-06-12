@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandBehavior : MonoBehaviour
+public class LegBehavior : MonoBehaviour
 {
-    [SerializeField] public float magneticForce = 0.5f;
-    [SerializeField] public float magneticRadius = 5f;
 
-    public GameObject player;
     private Rigidbody2D rb;
 
     private bool isHit;
 
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,32 +20,34 @@ public class HandBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isHit)
+        if (isHit)
         {
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
             rb.freezeRotation = true;
             rb.isKinematic = true;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collison!");
-        if (collision.transform.CompareTag("Player"))
-        {
-            if(isHit){
-                collision.transform.GetComponent<ThrowPart>().pickHand();
-                Destroy(this.gameObject);
-            }
-        } else if(collision.transform.CompareTag("Grabbable"))
-        {
+        if (!collision.transform.CompareTag("Player"))
+        { 
             Debug.Log("isHit");
             isHit = true;
-        } else {
-            player.GetComponent<ThrowPart>().pickHand();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.transform.CompareTag("Player") && player.GetComponent<CharacterMovement>().isOnLeg)
+        {
+            player.GetComponent<ThrowPart>().pickUpLeg();
             Destroy(this.gameObject);
-            player.GetComponent<ThrowPart>().breakHand = null;
+            player.GetComponent<ThrowPart>().breakLeg = null;
+            player.GetComponent<CharacterMovement>().isOnLeg = false;
         }
     }
 }

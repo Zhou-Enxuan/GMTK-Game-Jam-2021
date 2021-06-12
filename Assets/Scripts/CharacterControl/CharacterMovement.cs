@@ -35,6 +35,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
     public bool isGrounded;
+    public bool isOnLeg;
+    [SerializeField] private LayerMask whatIsLeg;
 
     public bool isOutControl;
 
@@ -127,6 +129,10 @@ public class CharacterMovement : MonoBehaviour
     private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
+        if(Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsLeg))
+        {
+            isOnLeg = true;
+        }
     }
 
     private void OnDrawGizmos()

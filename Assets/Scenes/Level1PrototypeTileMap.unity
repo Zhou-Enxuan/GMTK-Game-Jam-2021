@@ -388,11 +388,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 319152785731590675, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Name
-      value: LegShotPoint
-      objectReference: {fileID: 0}
     - target: {fileID: 7569651802977755959, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -458,26 +453,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803511663598, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803511663598, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599125, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599125, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 7569651804204942534, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -488,20 +463,10 @@ PrefabInstance:
       propertyPath: m_ShapeTexture
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651804378777367, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7569651804407670176, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651804407670181, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7569651804790744336, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
