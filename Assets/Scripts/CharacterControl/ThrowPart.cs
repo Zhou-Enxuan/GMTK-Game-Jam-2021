@@ -16,12 +16,20 @@ public class ThrowPart : MonoBehaviour
     private Transform shotPoint;
     // Start is called before the first frame update
 
+    [SerializeField]
+    private float retractAcce;
+
+    private Vector2 force;
+
     private GameObject breakPart;
+
+    private bool isretracting;
 
     void Start()
     {
         myBodyPart = transform.Find(partToThrow.name);
         shotPoint = myBodyPart.transform;
+        isretracting = false;
     }
 
     // Update is called once per frame
@@ -41,13 +49,19 @@ public class ThrowPart : MonoBehaviour
         }
         else
         {
+            
             Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
+            Debug.Log(partDirection);
+            Debug.DrawRay(transform.position, partDirection, Color.red);
             if (Input.GetKey(KeyCode.Q))
             {
                 GetComponent<Rigidbody2D>().gravityScale = 0;
                 GetComponent<CharacterMovement>().isConnecting = true;
-                GetComponent<Rigidbody2D>().AddForce(partDirection * 200);
-                
+                force = new Vector2(partDirection.x, partDirection.y) * retractAcce;
+                isretracting = true;
+                Debug.Log("q is down");
+
+
                 Debug.Log("is click");
             }
 
@@ -55,10 +69,19 @@ public class ThrowPart : MonoBehaviour
             {
                 GetComponent<CharacterMovement>().isConnecting = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                force = Vector2.zero;
                 GetComponent<Rigidbody2D>().gravityScale = 1;
+                isretracting = false;
+
             }
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        Debug.Log(force);
+        GetComponent<Rigidbody2D>().AddForce(force);
     }
 
     private void Shoot()
@@ -75,5 +98,16 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (!collision.transform.CompareTag("Hand") && isretracting)
+        //{
+        //    GetComponent<CharacterMovement>().isConnecting = false;
+        //    GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //    GetComponent<Rigidbody2D>().gravityScale = 1;
+        //    isretracting = false;
+        //}    
     }
 }

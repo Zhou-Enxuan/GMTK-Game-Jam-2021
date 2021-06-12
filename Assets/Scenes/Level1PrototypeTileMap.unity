@@ -314,6 +314,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.7676096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_Name
@@ -323,6 +338,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lunchForce
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: retractAcce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: retractSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -1328,7 +1353,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
+  m_MaximumTileChangeCount: 10
   m_ExtrusionFactor: 0.00001
 --- !u!1 &2142458320
 GameObject:
