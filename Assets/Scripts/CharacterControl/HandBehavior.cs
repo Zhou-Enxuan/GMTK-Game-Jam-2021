@@ -34,7 +34,7 @@ public class HandBehavior : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") && isHit)
         {
-            collision.transform.GetComponent<ThrowPart>().pickPart();
+            collision.transform.GetComponent<ThrowPart>().pickHand();
             Destroy(this.gameObject);
         }
 
