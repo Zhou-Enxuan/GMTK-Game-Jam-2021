@@ -20,7 +20,9 @@ public class ThrowPart : MonoBehaviour
     [SerializeField]
     private float retractAcce;
 
-    public GameObject breakPart;
+    public GameObject breakHand;
+
+    public GameObject breakLeg;
 
     private bool canRetract;
 
@@ -32,7 +34,7 @@ public class ThrowPart : MonoBehaviour
     void Start()
     {
         myBodyPart = transform.Find("RightHand");
-        shotPoint = myBodyPart.transform;
+        shotPoint = myBodyPart;
         canRetract = true;
     }
 
@@ -77,7 +79,7 @@ public class ThrowPart : MonoBehaviour
                Callback?.Invoke();
             }
         }
-        if(breakPart != null)
+        if(breakHand != null)
             Retract();
 
     }
@@ -85,10 +87,10 @@ public class ThrowPart : MonoBehaviour
     //shooting off the arm
     private void ShootArm()
     {
-        breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        breakPart.GetComponent<HandBehavior>().player = gameObject;
-        GetComponent<CharacterMovement>().startMagneticPull(breakPart, breakPart.GetComponent<HandBehavior>().magneticForce);
-        breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
+        breakHand = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakHand.GetComponent<HandBehavior>().player = gameObject;
+        GetComponent<CharacterMovement>().startMagneticPull(breakHand, breakHand.GetComponent<HandBehavior>().magneticForce);
+        breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         myBodyPart.gameObject.SetActive(false);
     }
 
@@ -106,10 +108,10 @@ public class ThrowPart : MonoBehaviour
     //Shoot the leg at horizontallly and when the leg hit a collider it freeze and become platfrom to jump on
     private void ShootLeg()
     {
-        //breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        //breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
-        //GetComponent<CharacterMovement>().toggleLimping();
-        //myBodyPart.gameObject.SetActive(false);
+        breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
+        GetComponent<CharacterMovement>().toggleLimping();
+        myBodyPart.gameObject.SetActive(false);
     }
 
     //pick up the hand after the player collide with the hand
@@ -130,6 +132,7 @@ public class ThrowPart : MonoBehaviour
             case 0:
                 partToThrow = Resources.Load<GameObject>("Prefab/Character/Part/RightHand");
                 myBodyPart = transform.Find("RightHand");
+                shotPoint = myBodyPart;
                 Callback = ShootArm;
                 break;
             case 1:
@@ -140,6 +143,7 @@ public class ThrowPart : MonoBehaviour
             case 2:
                 partToThrow = Resources.Load<GameObject>("Prefab/Character/Part/RightLeg");
                 myBodyPart = transform.Find("RightLeg");
+                shotPoint = transform.Find("LegShotPoint");
                 Callback = ShootLeg;
                 break;
             default:
@@ -151,12 +155,12 @@ public class ThrowPart : MonoBehaviour
     //retract player to the hand
     private void Retract()
     {
-        Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
+        Vector2 partDirection = -(transform.position - breakHand.transform.position).normalized;
         //Debug.Log(partDirection);
         Debug.DrawRay(transform.position, partDirection, Color.red);
         if (Input.GetMouseButton(1) && canRetract)
         {
-            transform.position = Vector2.Lerp(transform.position, breakPart.transform.position, retractAcce * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position, breakHand.transform.position, retractAcce * Time.deltaTime);
             GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<CharacterMovement>().isConnecting = true;
         }
@@ -176,8 +180,8 @@ public class ThrowPart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             pickHand();
-            Destroy(breakPart.gameObject);
-            breakPart = null;
+            Destroy(breakHand.gameObject);
+            breakHand = null;
         }
     }
 
