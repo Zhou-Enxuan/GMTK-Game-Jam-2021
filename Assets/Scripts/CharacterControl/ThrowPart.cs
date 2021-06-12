@@ -19,15 +19,16 @@ public class ThrowPart : MonoBehaviour
     [SerializeField]
     private float retractAcce;
 
-    private Vector2 force;
-
     private GameObject breakPart;
+
+    private bool canRetract;
 
 
     void Start()
     {
         myBodyPart = transform.Find(partToThrow.name);
         shotPoint = myBodyPart.transform;
+        canRetract = true;
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class ThrowPart : MonoBehaviour
             Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
             Debug.Log(partDirection);
             Debug.DrawRay(transform.position, partDirection, Color.red);
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.Q) && canRetract)
             {
                 transform.position = Vector2.Lerp(transform.position, breakPart.transform.position, retractAcce * Time.deltaTime);
                 GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -63,8 +64,11 @@ public class ThrowPart : MonoBehaviour
             {
                 GetComponent<CharacterMovement>().isConnecting = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                force = Vector2.zero;
                 GetComponent<Rigidbody2D>().gravityScale = 1;
+                if (GetComponent<CharacterMovement>().isGrounded)
+                { 
+                    canRetract = true;
+                }   
 
             }
         }
@@ -87,14 +91,14 @@ public class ThrowPart : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        //if (!collision.transform.CompareTag("Hand") && isretracting)
-        //{
-        //    GetComponent<CharacterMovement>().isConnecting = false;
-        //    GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        //    GetComponent<Rigidbody2D>().gravityScale = 1;
-        //    isretracting = false;
-        //}    
+        if (!collision.transform.CompareTag("Hand"))
+        {
+            GetComponent<CharacterMovement>().isConnecting = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+            canRetract = false;
+        }
     }
 }

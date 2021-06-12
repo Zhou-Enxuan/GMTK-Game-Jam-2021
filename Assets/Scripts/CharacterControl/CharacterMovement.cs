@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
 
-    private bool isGrounded;
+    public bool isGrounded;
 
     public bool isConnecting;
 
