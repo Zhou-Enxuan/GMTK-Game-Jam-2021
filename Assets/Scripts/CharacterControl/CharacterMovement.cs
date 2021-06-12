@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
 
+    [SerializeField] private float maxMagnetRange = 150; 
     private GameObject magneticCenter;
     private float magneticForce;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
@@ -63,7 +64,6 @@ public class CharacterMovement : MonoBehaviour
         if(!isConnecting && !isOutControl)
         {
             MoveCharacter();
-            checkMagneticPull();
             if(isGrounded)
             {
                 ApplyLinearDrag();
@@ -78,6 +78,7 @@ public class CharacterMovement : MonoBehaviour
         {
             Running();
         }
+        checkMagneticPull();
 
     }
 
@@ -148,24 +149,19 @@ public class CharacterMovement : MonoBehaviour
 
     private void Running()
     {
-        if(transform.localScale.x > 0)
+        float direction = 1;
+        if(transform.localScale.x < 0)
         {
-            rb.AddForce(new Vector2(1, 0f) * movementSpeed);
-
-            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-            {
-                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
-            }
+            direction = -1;
         }
-        else
-        {
-            rb.AddForce(new Vector2(-1, 0f) * movementSpeed);
 
-            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-            {
-                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
-            }
+        float movement = direction * movementSpeed * Time.fixedDeltaTime;
+        if(isLimping){
+            movement = movement * limpingSpeedModifier;
         }
+        Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
     }
 
     public void Respawn()
@@ -181,9 +177,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void checkMagneticPull(){
         if(magneticCenter != null){
+            float radius = magneticCenter.GetComponent<HandBehavior>().magneticRadius;
             Vector2 distance = magneticCenter.transform.position - transform.position;
-            if(distance.magnitude > magneticCenter.GetComponent<HandBehavior>().magneticRadius){
-                transform.position = Vector2.Lerp(transform.position, magneticCenter.transform.position, magneticForce * Time.deltaTime);
+            if(distance.magnitude > maxMagnetRange){
+                return;
+            }
+            if(distance.magnitude > radius){
+                distance = (distance.normalized * (distance.magnitude - radius));
+                transform.position = Vector2.Lerp(transform.position, distance, magneticForce * Time.fixedDeltaTime);
             }
         }
     }
