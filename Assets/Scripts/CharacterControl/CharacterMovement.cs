@@ -21,7 +21,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
 
-    [SerializeField] private float maxMagnetRange = 100; 
+    [SerializeField] private float maxMagnetRange = 150; 
     private GameObject magneticCenter;
     private float magneticForce;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
@@ -62,7 +62,6 @@ public class CharacterMovement : MonoBehaviour
         if(!isConnecting && !isOutControl)
         {
             MoveCharacter();
-            checkMagneticPull();
             if(isGrounded)
             {
                 ApplyLinearDrag();
@@ -77,6 +76,7 @@ public class CharacterMovement : MonoBehaviour
         {
             Running();
         }
+        checkMagneticPull();
 
     }
 
