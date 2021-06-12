@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3847451325945355113}
   - component: {fileID: 4182404503967755910}
   - component: {fileID: 1687615793196627622}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7154943067633851054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.652, y: 0.301, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.39635, y: 0.39635, z: 0.39635}
   m_Children:
   - {fileID: 7154943067862328811}
   m_Father: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7154943067862328811}
   - component: {fileID: 7154943067862328809}
   - component: {fileID: 7154943067862328810}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: New SpriteShapeController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
