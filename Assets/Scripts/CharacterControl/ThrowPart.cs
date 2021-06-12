@@ -92,7 +92,7 @@ public class ThrowPart : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.transform.CompareTag("Hand"))
+        if (collision.transform.CompareTag("Ground"))
         {
             GetComponent<CharacterMovement>().isConnecting = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;

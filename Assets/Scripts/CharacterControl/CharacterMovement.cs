@@ -94,6 +94,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        CheckCollision();
         horizontalDirection = GetInput().x;
         if (canJump)
         {
@@ -103,7 +104,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckCollision();
         if(!isConnecting)
         {
             MoveCharacter();
@@ -154,7 +154,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void CheckCollision()
     {
-        isGrounded = Physics2D.Raycast(transform.position * grpundRaycastLength, Vector2.down, grpundRaycastLength, whatIsGround);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
     }
 
     private void OnDrawGizmos()
