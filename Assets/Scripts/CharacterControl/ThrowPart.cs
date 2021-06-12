@@ -112,8 +112,10 @@ public class ThrowPart : MonoBehaviour
     {
         breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
         breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
+        
         GetComponent<CharacterMovement>().toggleLimping();
         myBodyPart.gameObject.SetActive(false);
+        GetComponent<CharacterMovement>().isOnLeg = false;
     }
 
     //pick up the hand after the player collide with the hand
@@ -198,11 +200,14 @@ public class ThrowPart : MonoBehaviour
     //shoot off the leg
     //***NEED TO BE IMPLEMENT***
     //After you stand up on the leg platform, the next jump brought your leg back
-    private void pickUpLeg()
+    public void pickUpLeg()
     {
-        if(!GetComponent<CharacterMovement>().isLimping){
+        Debug.Log("leg pick up");
+        transform.Find("RightLeg").gameObject.SetActive(true);
+        if (GetComponent<CharacterMovement>().isLimping){
             GetComponent<CharacterMovement>().toggleLimping();
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
