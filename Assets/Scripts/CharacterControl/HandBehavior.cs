@@ -17,19 +17,13 @@ public class HandBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
+        player = GameObject.Find("Character");
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(isHit)
-        {
-            rb.velocity = Vector2.zero;
-            rb.gravityScale = 0;
-            rb.freezeRotation = true;
-            rb.isKinematic = true;
-        }
-    }
+    //void Update()
+    //{
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,9 +36,21 @@ public class HandBehavior : MonoBehaviour
             }
         } else if(collision.transform.CompareTag("Grabbable"))
         {
-            Debug.Log("isHit");
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
+            rb.freezeRotation = true;
+            rb.isKinematic = true;
             isHit = true;
-        } else {
+        }
+        else if(collision.transform.CompareTag("MovingPlat"))
+        {
+            transform.parent = collision.transform;
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.freezeRotation = true;
+            isHit = true;
+        }
+        else {
             player.GetComponent<ThrowPart>().pickHand();
             Destroy(this.gameObject);
             player.GetComponent<ThrowPart>().breakHand = null;
