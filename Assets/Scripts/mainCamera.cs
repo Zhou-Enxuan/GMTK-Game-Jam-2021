@@ -12,6 +12,7 @@ public class mainCamera : MonoBehaviour
     [SerializeField] private float margin = 0;
 
     [SerializeField] private GameObject player;
+    private GameObject alternate;
     [Range(1, 10)] [SerializeField] private float interpolationRatio = 2;
     // Start is called before the first frame update
     
@@ -35,6 +36,19 @@ public class mainCamera : MonoBehaviour
 
         if((transform.position - targetPos).magnitude >= margin){
             transform.position = Vector3.Lerp(transform.position, targetPos, interpolationRatio*Time.fixedDeltaTime);
+        }
+    }
+
+    public void followPart(GameObject brokenPart){
+        if(alternate == null)
+            alternate = player;
+        player = brokenPart;
+    }
+
+    public void restoreFollow(){
+        if(alternate != null){
+            player = alternate;
+            alternate = null;
         }
     }
 }
