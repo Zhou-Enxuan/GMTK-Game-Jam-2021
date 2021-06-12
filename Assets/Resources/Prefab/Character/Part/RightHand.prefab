@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magneticForce: 1
-  magneticRadius: 3
+  magneticRadius: 5
+  player: {fileID: 0}
 --- !u!1 &7154943067862328812
 GameObject:
   m_ObjectHideFlags: 0
