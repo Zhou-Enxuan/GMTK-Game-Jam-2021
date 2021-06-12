@@ -126,7 +126,7 @@ public class CharacterMovement : MonoBehaviour
         rb.drag = airLinearDrag;
     }
 
-    public void Respond(Vector2 respondPoint)
+    public void Respawn(Vector2 respondPoint)
     {
         transform.position = respondPoint;
     }
