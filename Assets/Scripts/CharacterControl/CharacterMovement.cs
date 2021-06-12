@@ -95,6 +95,15 @@ public class CharacterMovement : MonoBehaviour
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
+
+        if (horizontalDirection > 0)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (horizontalDirection < 0)
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
     }
 
     private void ApplyLinearDrag()
