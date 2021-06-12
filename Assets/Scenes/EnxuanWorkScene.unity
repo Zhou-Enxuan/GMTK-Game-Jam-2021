@@ -677,6 +677,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 51506261f4b71483687e1eb75aba0674, type: 2}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: jumpForce
@@ -686,6 +696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: airLinearDrag
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: grpundRaycastLength
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
