@@ -4,64 +4,6 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    //[SerializeField]
-    //private float speed;
-    //[SerializeField]
-    //private float jumpfroce;
-
-    //private float moveInput;
-    //[SerializeField]
-    //private Rigidbody2D rb;
-
-    //[SerializeField]
-    //private Transform groundCheck;
-
-    //[SerializeField]
-    //private float checkRadius;
-
-    //[SerializeField]
-    //private LayerMask whatIsGround;
-
-    //public bool isGrounded;
-
-    //public bool isConnecting;
-
-    //public Transform breakpart;
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    isConnecting = false;
-    //}
-
-    //private void Update()
-    //{
-    //    if (!isConnecting)
-    //    {
-    //        moveInput = Input.GetAxis("Horizontal");
-
-    //        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-    //        {
-    //            Debug.Log(isGrounded);
-
-    //            rb.velocity = new Vector2(rb.velocity.x, 0);
-    //            rb.AddForce(Vector2.up * jumpfroce);
-    //        }
-    //    }
-    //}
-
-    //// Update is called once per frame
-    //void FixedUpdate()
-    //{
-    //    isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-    //    rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
-    //}
-
-    //public void Respond(Vector2 respondPoint)
-    //{
-    //    transform.position = respondPoint;
-    //}
 
     [Header("Components")]
     private Rigidbody2D rb;
@@ -166,5 +108,10 @@ public class CharacterMovement : MonoBehaviour
     private void ApplyAirLinearDrag()
     {
         rb.drag = airLinearDrag;
+    }
+
+    public void Respond(Vector2 respondPoint)
+    {
+        transform.position = respondPoint;
     }
 }

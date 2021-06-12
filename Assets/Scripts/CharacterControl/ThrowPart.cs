@@ -71,6 +71,12 @@ public class ThrowPart : MonoBehaviour
                 }   
 
             }
+
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pickPart();
+                Destroy(breakPart.gameObject);
+            }
         }
 
     }
