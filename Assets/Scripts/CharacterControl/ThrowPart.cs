@@ -88,7 +88,7 @@ public class ThrowPart : MonoBehaviour
     private void ShootHead()
     {
         myBodyPart.gameObject.SetActive(false);
-        GetComponent<CharacterMovement>().isOutControl = true;
+        GetComponent<CharacterMovement>().isOutControl = true; 
         StartCoroutine(HeadBackCount());
 
     }
@@ -98,7 +98,9 @@ public class ThrowPart : MonoBehaviour
     //Shoot the leg at horizontallly and when the leg hit a collider it freeze and become platfrom to jump on
     private void ShootLeg()
     {
-
+        breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
+        myBodyPart.gameObject.SetActive(false);
     }
 
     //pick up the hand after the player collide with the hand

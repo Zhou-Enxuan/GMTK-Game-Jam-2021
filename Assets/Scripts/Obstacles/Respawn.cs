@@ -1,17 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour
+public abstract class Respawn : MonoBehaviour
+/*
+This class implements the respawn capabilities to an object.
+extend this class to add specifics to the way the respawn happens
+ovverriding OnCollisionEnter2D.
+*/
 {
-    [SerializeField] private GameObject RespawnPoint;
-    [SerializeField] private GameObject Character; 
-    
-    void OnCollisionEnter2D(Collision2D col){
-        Debug.Log("collision");
+    //method to override, remember to call "base.OnCollisionEnter2D(Collision2D col)" in the override method
+    public virtual void OnCollisionEnter2D(Collision2D col){
         if(col.transform.CompareTag("Player")){
-            Character.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Character.transform.position = RespawnPoint.transform.position;
+            col.gameObject.GetComponent<CharacterMovement>().Respawn();
         }
     }
 }

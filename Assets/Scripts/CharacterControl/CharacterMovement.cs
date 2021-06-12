@@ -4,63 +4,169 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Vector2 respawnPoint;
 
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float jumpfroce;
-
-    private float moveInput;
-    [SerializeField]
+    [Header("Components")]
     private Rigidbody2D rb;
 
+    [Header("Movement variables")]
+    
     [SerializeField]
-    private Transform groundCheck;
+    private GameObject respawnPoint;
+    [SerializeField] private float movementAcceelertion;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float linearDrag;
+    private float horizontalDirection;
+    private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
 
-    [SerializeField]
-    private float checkRadius;
+    [Header("Jump Variables")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float airLinearDrag;
 
-    [SerializeField]
-    private LayerMask whatIsGround;
 
-    private bool isGrounded;
+    [Header("Ground Collision Variables")]
+    [SerializeField] private float grpundRaycastLength;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
+    public bool isGrounded;
+
+    public bool isOutControl;
+
 
     public bool isConnecting;
 
-    public Transform breakpart;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        isConnecting = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (!isConnecting)
+        CheckCollision();
+        horizontalDirection = GetInput().x;
+        if (canJump && !isOutControl)
         {
-            moveInput = Input.GetAxis("Horizontal");
-
-            if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-            {
-                rb.velocity = Vector2.up * jumpfroce * Time.deltaTime;
-            }
+            Jump();
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        if(!isConnecting && !isOutControl)
+        {
+            MoveCharacter();
+            if(isGrounded)
+            {
+                ApplyLinearDrag();
+            }
+            else
+            {
+                ApplyAirLinearDrag();
+            }
+        }
 
-        rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
+        if(isOutControl)
+        {
+            Running();
+        }
+
+    }
+
+    private Vector2 GetInput()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    private void MoveCharacter()
+    {
+        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementAcceelertion);
+
+        if(Mathf.Abs(rb.velocity.x) > maxSpeed)
+        {
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y); 
+        }
+
+        if (horizontalDirection > 0)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (horizontalDirection < 0)
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+    }
+
+    private void ApplyLinearDrag()
+    {
+        if(Mathf.Abs(horizontalDirection) < 0.4f || changeDirection)
+        {
+            rb.drag = linearDrag;
+        }
+        else 
+        {
+            rb.drag = 0f;
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+    }
+
+    private void CheckCollision()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * grpundRaycastLength);
+    }
+
+    private void ApplyAirLinearDrag()
+    {
+        rb.drag = airLinearDrag;
+    }
+
+    public void Respawn(Vector2 respondPoint)
+    {
+        transform.position = respondPoint;
+    }
+
+    private void Running()
+    {
+        if(transform.localScale.x > 0)
+        {
+            rb.AddForce(new Vector2(1, 0f) * movementAcceelertion);
+
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
+        }
+        else
+        {
+            rb.AddForce(new Vector2(-1, 0f) * movementAcceelertion);
+
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
+        }
     }
 
     public void Respawn()
     {
         rb.velocity = Vector2.zero;
-        transform.position = respawnPoint;
+        transform.position = respawnPoint.transform.position;
+    }
+
+    //shoot off the leg
+    //***NEED TO BE IMPLEMENT***
+    //Slow down player movement
+    private void limping()
+    {
+
     }
 }

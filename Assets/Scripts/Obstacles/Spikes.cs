@@ -2,29 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class Spikes : Respawn
 {
-
-    [SerializeField] private Transform respawnPoint;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Player"))
-        {
-            collision.transform.GetComponent<CharacterMovement>().Respawn(respawnPoint.position);
-        }
+        base.OnCollisionEnter2D(collision);
     }
 }
