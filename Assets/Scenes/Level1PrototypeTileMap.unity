@@ -388,6 +388,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 319152785731590675, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Name
+      value: LegShotPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651802977755959, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -397,21 +402,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -448,90 +438,45 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_BodyType
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 51506261f4b71483687e1eb75aba0674, type: 2}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_AngularDrag
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_UseAutoMass
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: airLinearDrag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: grpundRaycastLength
-      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803511663598, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: lunchForce
-      value: 1000
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803511663598, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: retractAcce
-      value: 10
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803600599125, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: retractSpeed
-      value: 10
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803600599125, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803721097438, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_Name
-      value: Head
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7569651804204942534, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -543,10 +488,20 @@ PrefabInstance:
       propertyPath: m_ShapeTexture
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7569651804378777367, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7569651804407670176, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651804407670181, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7569651804790744336, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
