@@ -50,6 +50,7 @@ public class HandBehavior : MonoBehaviour
         } else {
             player.GetComponent<ThrowPart>().pickHand();
             Destroy(this.gameObject);
+            player.GetComponent<ThrowPart>().breakPart = null;
         }
     }
 }
