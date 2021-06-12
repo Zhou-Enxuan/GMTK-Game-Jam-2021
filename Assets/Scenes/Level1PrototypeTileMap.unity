@@ -281,13 +281,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.76
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.32
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -317,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_Mass
-      value: 0.7676096
+      value: 1.221582
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -328,6 +343,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseAutoMass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
+        type: 3}
+      propertyPath: airLinearDrag
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -342,7 +372,7 @@ PrefabInstance:
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: retractAcce
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}

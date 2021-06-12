@@ -26,7 +26,7 @@ public class ThrowPart : MonoBehaviour
 
     void Start()
     {
-        myBodyPart = transform.Find(partToThrow.name);
+        myBodyPart = transform.Find("RightHand");
         shotPoint = myBodyPart.transform;
         canRetract = true;
     }
@@ -78,7 +78,6 @@ public class ThrowPart : MonoBehaviour
     private void Shoot()
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        GetComponent<CharacterMovement>().breakpart = breakPart.transform;
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce);
         myBodyPart.gameObject.SetActive(false);
     }
@@ -91,7 +90,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.transform.CompareTag("Hand"))
         {

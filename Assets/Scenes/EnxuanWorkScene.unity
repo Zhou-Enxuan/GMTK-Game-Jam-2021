@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 473244414}
   - component: {fileID: 473244416}
   - component: {fileID: 473244415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New SpriteShapeController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131389307}
   - component: {fileID: 1131389306}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301085221}
   - component: {fileID: 1301085222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 1611208002}
   - component: {fileID: 1611208004}
   - component: {fileID: 1611208003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New SpriteShapeController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,21 +629,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991936, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.88
       objectReference: {fileID: 0}
@@ -692,25 +677,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
+    - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: m_Mass
-      value: 4.886328
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803302991938, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 10
+      propertyPath: jumpForce
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991939, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: jumpfroce
-      value: 500
+      propertyPath: airLinearDrag
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
@@ -719,24 +694,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
-      propertyPath: lunchForce
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
+      propertyPath: partToThrow
+      value: 
+      objectReference: {fileID: 7154943067633851054, guid: e0c770d0bb62e400cb67d2f450a87258,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569651803600599126, guid: 652e25902f92647a3a56f747fc421508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7569651804204942534, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: m_ShapeTexture
