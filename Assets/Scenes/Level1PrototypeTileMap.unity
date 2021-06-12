@@ -337,12 +337,12 @@ PrefabInstance:
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: lunchForce
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
       propertyPath: retractAcce
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7569651803302991948, guid: 652e25902f92647a3a56f747fc421508,
         type: 3}
