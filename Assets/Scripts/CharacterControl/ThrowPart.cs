@@ -64,7 +64,7 @@ public class ThrowPart : MonoBehaviour
             {
                 GetComponent<CharacterMovement>().isConnecting = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                GetComponent<Rigidbody2D>().gravityScale = 1;
+                GetComponent<Rigidbody2D>().gravityScale = 10;
                 if (GetComponent<CharacterMovement>().isGrounded)
                 { 
                     canRetract = true;
@@ -87,7 +87,7 @@ public class ThrowPart : MonoBehaviour
         myBodyPart.gameObject.SetActive(true);
         GetComponent<CharacterMovement>().isConnecting = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().gravityScale = 1;
+        GetComponent<Rigidbody2D>().gravityScale = 10;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -96,7 +96,7 @@ public class ThrowPart : MonoBehaviour
         {
             GetComponent<CharacterMovement>().isConnecting = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().gravityScale = 10;
             canRetract = false;
         }
     }
