@@ -12,11 +12,13 @@ public class CharacterMovement : MonoBehaviour
     
     [SerializeField]
     private GameObject respawnPoint;
-    [SerializeField] private float movementAcceelertion;
+    [SerializeField] private float movementSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float linearDrag;
     private float horizontalDirection;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
     [Header("Jump Variables")]
     [SerializeField] private float jumpForce;
@@ -78,21 +80,11 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementAcceelertion);
+        float movement = horizontalDirection * movementSpeed * Time.fixedDeltaTime;
+        Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
-        if(Mathf.Abs(rb.velocity.x) > maxSpeed)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y); 
-        }
-
-        if (horizontalDirection > 0)
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else if (horizontalDirection < 0)
-        {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
-        }
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
     }
 
     private void ApplyLinearDrag()
@@ -138,7 +130,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if(transform.localScale.x > 0)
         {
-            rb.AddForce(new Vector2(1, 0f) * movementAcceelertion);
+            rb.AddForce(new Vector2(1, 0f) * movementSpeed);
 
             if (Mathf.Abs(rb.velocity.x) > maxSpeed)
             {
@@ -147,7 +139,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            rb.AddForce(new Vector2(-1, 0f) * movementAcceelertion);
+            rb.AddForce(new Vector2(-1, 0f) * movementSpeed);
 
             if (Mathf.Abs(rb.velocity.x) > maxSpeed)
             {
