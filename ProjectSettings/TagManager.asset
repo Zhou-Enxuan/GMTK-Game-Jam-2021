@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - StartingPoint
+  - Hand
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
+  - Hand
+  - Ground
   - 
   - 
   - 
