@@ -80,6 +80,7 @@ public class ThrowPart : MonoBehaviour
     private void ShootArm()
     {
         breakPart = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakPart.GetComponent<HandBehavior>().player = gameObject;
         GetComponent<CharacterMovement>().startMagneticPull(breakPart, breakPart.GetComponent<HandBehavior>().magneticForce);
         breakPart.GetComponent<Rigidbody2D>().AddForce(breakPart.transform.right * lunchForce * (transform.localScale.x * 2));
         myBodyPart.gameObject.SetActive(false);
@@ -145,14 +146,13 @@ public class ThrowPart : MonoBehaviour
     private void Retract()
     {
         Vector2 partDirection = -(transform.position - breakPart.transform.position).normalized;
-        Debug.Log(partDirection);
+        //Debug.Log(partDirection);
         Debug.DrawRay(transform.position, partDirection, Color.red);
         if (Input.GetMouseButton(1) && canRetract)
         {
             transform.position = Vector2.Lerp(transform.position, breakPart.transform.position, retractAcce * Time.deltaTime);
             GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<CharacterMovement>().isConnecting = true;
-            Debug.Log("q is down");
         }
 
         if (Input.GetMouseButtonUp(1))

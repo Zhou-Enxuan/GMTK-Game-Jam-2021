@@ -165,8 +165,8 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void checkMagneticPull(){
-        Vector2 distance = magneticCenter.transform.position - transform.position;
         if(magneticCenter != null){
+            Vector2 distance = magneticCenter.transform.position - transform.position;
             if(distance.magnitude > magneticCenter.GetComponent<HandBehavior>().magneticRadius){
                 transform.position = Vector2.Lerp(transform.position, magneticCenter.transform.position, magneticForce * Time.deltaTime);
             }

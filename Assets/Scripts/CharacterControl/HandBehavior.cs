@@ -6,6 +6,8 @@ public class HandBehavior : MonoBehaviour
 {
     [SerializeField] public float magneticForce = 0.5f;
     [SerializeField] public float magneticRadius = 5f;
+
+    public GameObject player;
     private Rigidbody2D rb;
 
     private bool isHit;
@@ -34,17 +36,20 @@ public class HandBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Player") && isHit)
+        Debug.Log("collison!");
+        if (collision.transform.CompareTag("Player"))
         {
-            collision.transform.GetComponent<ThrowPart>().pickHand();
-            Destroy(this.gameObject);
-        }
-
-        if(!collision.transform.CompareTag("Player"))
+            if(isHit){
+                collision.transform.GetComponent<ThrowPart>().pickHand();
+                Destroy(this.gameObject);
+            }
+        } else if(collision.transform.CompareTag("Grabbable"))
         {
             Debug.Log("isHit");
             isHit = true;
+        } else {
+            player.GetComponent<ThrowPart>().pickHand();
+            Destroy(this.gameObject);
         }
     }
-
 }

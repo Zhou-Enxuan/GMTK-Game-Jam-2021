@@ -40,7 +40,7 @@ public class MovingPlatform : MonoBehaviour
         }
         else if (gameObject.transform.position != currentDestination)
         {
-            Debug.Log("return");
+            //Debug.Log("return");
         }
     }
 
