@@ -10,9 +10,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] string sceneName;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (instance != null)
+        {
+            GameObject.Destroy(instance);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     // Update is called once per frame
@@ -23,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Win()
     {
-        UIManager.instance
+        //UIManager.instance
     }
    
 }
