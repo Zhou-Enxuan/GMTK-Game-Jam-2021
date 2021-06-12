@@ -93,6 +93,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().startMagneticPull(breakHand, breakHand.GetComponent<HandBehavior>().magneticForce);
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         myBodyPart.gameObject.SetActive(false);
+        //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
     }
 
     //shoot off the head
@@ -123,6 +124,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 10;
         GetComponent<CharacterMovement>().stopMagneticPull();
+        //GameObject.Find("Main Camera").GetComponent<mainCamera>().restoreFollow();
     }
 
     //check which selection we have and set up the correct behavior
