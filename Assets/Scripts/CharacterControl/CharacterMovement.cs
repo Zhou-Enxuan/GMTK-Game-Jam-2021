@@ -45,9 +45,12 @@ public class CharacterMovement : MonoBehaviour
 
     public bool isConnecting;
 
+    private Animator anim;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -96,6 +99,7 @@ public class CharacterMovement : MonoBehaviour
         }
         Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
+        anim.SetFloat("Speed", Mathf.Abs(movement));
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
@@ -198,7 +202,6 @@ public class CharacterMovement : MonoBehaviour
 
     public void stopMagneticPull(){
         magneticCenter = null;
-    }
-
+    }  
 
 }
