@@ -126,6 +126,7 @@ MonoBehaviour:
   linearDrag: 10
   limpingSpeedModifier: 0.5
   isLimping: 0
+  maxMagnetRange: 150
   m_MovementSmoothing: 0.141
   jumpForce: 30
   airLinearDrag: 10
