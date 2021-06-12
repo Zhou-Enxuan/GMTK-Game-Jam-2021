@@ -36,6 +36,8 @@ public class ThrowPart : MonoBehaviour
 
     public float HeadBack = 5;
 
+    private Animator anim;
+
 
     void Start()
     {
@@ -43,6 +45,7 @@ public class ThrowPart : MonoBehaviour
         Debug.Log(myBodyPart);
         shotPoint = myBodyPart;
         canRetract = true;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -94,13 +97,19 @@ public class ThrowPart : MonoBehaviour
     //shooting off the arm
     private void ShootArm()
     {
+       
+        anim.SetTrigger("ShotHand");
+        //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
+    }
+
+    private void ShootArmActivate()
+    {
         breakHand = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
         breakHand.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         breakHand.GetComponent<HandBehavior>().player = gameObject;
         GetComponent<CharacterMovement>().startMagneticPull(breakHand, breakHand.GetComponent<HandBehavior>().magneticForce);
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
-        //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
     }
 
     //shoot off the head
@@ -134,6 +143,7 @@ public class ThrowPart : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().gravityScale = 10;
         GetComponent<CharacterMovement>().stopMagneticPull();
+        anim.ResetTrigger("ShotHand");
         //GameObject.Find("Main Camera").GetComponent<mainCamera>().restoreFollow();
     }
 
