@@ -23,13 +23,11 @@ public class ThrowPart : MonoBehaviour
 
     private GameObject breakPart;
 
-    private bool isretracting;
 
     void Start()
     {
         myBodyPart = transform.Find(partToThrow.name);
         shotPoint = myBodyPart.transform;
-        isretracting = false;
     }
 
     // Update is called once per frame
@@ -55,14 +53,10 @@ public class ThrowPart : MonoBehaviour
             Debug.DrawRay(transform.position, partDirection, Color.red);
             if (Input.GetKey(KeyCode.Q))
             {
+                transform.position = Vector2.Lerp(transform.position, breakPart.transform.position, retractAcce * Time.deltaTime);
                 GetComponent<Rigidbody2D>().gravityScale = 0;
                 GetComponent<CharacterMovement>().isConnecting = true;
-                force = new Vector2(partDirection.x, partDirection.y) * retractAcce;
-                isretracting = true;
                 Debug.Log("q is down");
-
-
-                Debug.Log("is click");
             }
 
             if (Input.GetKeyUp(KeyCode.Q))
@@ -71,17 +65,10 @@ public class ThrowPart : MonoBehaviour
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 force = Vector2.zero;
                 GetComponent<Rigidbody2D>().gravityScale = 1;
-                isretracting = false;
 
             }
         }
 
-    }
-
-    void FixedUpdate()
-    {
-        Debug.Log(force);
-        GetComponent<Rigidbody2D>().AddForce(force);
     }
 
     private void Shoot()
