@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
     private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
     public bool isGrounded;
 
+    public bool isOutControl;
+
 
     public bool isConnecting;
 
@@ -38,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
     {
         CheckCollision();
         horizontalDirection = GetInput().x;
-        if (canJump)
+        if (canJump && !isOutControl)
         {
             Jump();
         }
@@ -46,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isConnecting)
+        if(!isConnecting && !isOutControl)
         {
             MoveCharacter();
             if(isGrounded)
@@ -57,6 +59,11 @@ public class CharacterMovement : MonoBehaviour
             {
                 ApplyAirLinearDrag();
             }
+        }
+
+        if(isOutControl)
+        {
+            Running();
         }
 
     }
@@ -73,6 +80,15 @@ public class CharacterMovement : MonoBehaviour
         if(Mathf.Abs(rb.velocity.x) > maxSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y); 
+        }
+
+        if (horizontalDirection > 0)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (horizontalDirection < 0)
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
         }
     }
 
@@ -113,5 +129,27 @@ public class CharacterMovement : MonoBehaviour
     public void Respond(Vector2 respondPoint)
     {
         transform.position = respondPoint;
+    }
+
+    public void Running()
+    {
+        if(transform.localScale.x > 0)
+        {
+            rb.AddForce(new Vector2(1, 0f) * movementAcceelertion);
+
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
+        }
+        else
+        {
+            rb.AddForce(new Vector2(-1, 0f) * movementAcceelertion);
+
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
+        }
     }
 }

@@ -117,6 +117,7 @@ MonoBehaviour:
   lunchForce: 1000
   shotPoint: {fileID: 0}
   retractAcce: 10
+  HeadBack: 5
 --- !u!1001 &740764047967232763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,12 +148,12 @@ PrefabInstance:
     - target: {fileID: 7154943067633851053, guid: 141bcac15f7f24ed4916fd09d46bb16f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.652
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 7154943067633851053, guid: 141bcac15f7f24ed4916fd09d46bb16f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.301
+      value: 0.472
       objectReference: {fileID: 0}
     - target: {fileID: 7154943067633851053, guid: 141bcac15f7f24ed4916fd09d46bb16f,
         type: 3}
