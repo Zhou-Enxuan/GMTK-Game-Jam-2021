@@ -212,7 +212,7 @@ public class ThrowPart : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.transform.CompareTag("player") && GetComponent<CharacterMovement>().isConnecting && !GetComponent<CharacterMovement>().isGrounded)
+        if (!collision.transform.CompareTag("Player") && GetComponent<CharacterMovement>().isConnecting && !GetComponent<CharacterMovement>().isGrounded)
         {
             GetComponent<CharacterMovement>().isConnecting = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;

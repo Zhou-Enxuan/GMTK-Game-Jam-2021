@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float linearDrag;
     [SerializeField] private float limpingSpeedModifier = 0.5f;
     private float horizontalDirection;
+    public Vector3 thisIsTheScaleNow;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
@@ -101,11 +102,11 @@ public class CharacterMovement : MonoBehaviour
 
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
         else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
         {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(-thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
     }
 
@@ -124,6 +125,7 @@ public class CharacterMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
+        Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
 
