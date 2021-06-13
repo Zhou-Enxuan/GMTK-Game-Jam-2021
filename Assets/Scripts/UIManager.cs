@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     [Header("Components")]
+    public CharacterState state;
     [SerializeField]private Text selectPartText;
     [SerializeField] private GameObject player;
 
@@ -44,12 +45,17 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("MyRobot");
+        state = player.GetComponent<CharacterState>(); 
+        /*
         partChoose = new string[3];
         partChoose[0] = "Arm";
         partChoose[1] = "Head";
         partChoose[2] = "Leg";
 
         selection = 0;
+        player.SendMessage("checkFunction", selection);
+        */
 
     }
 
@@ -77,10 +83,12 @@ public class UIManager : MonoBehaviour
 
     private void selectingPart()
     {
-        selectPartText.text = partChoose[selection];
-        selectedPartImage.sprite = imageLibrary[selection];
+        selectPartText.text = state.partSelected.ToString();
+        selectedPartImage.sprite = imageLibrary[(int)state.partSelected];
         if (Input.GetKeyDown(KeyCode.E))
         {
+            state.selectNext();
+            /*
             if (selection < 2)
             {
                 ++selection;
@@ -89,10 +97,13 @@ public class UIManager : MonoBehaviour
             {
                 selection = 0;
             }
+            */
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            state.selectPrevious();
+            /*
             if (selection > 0)
             {
                 --selection;
@@ -101,6 +112,9 @@ public class UIManager : MonoBehaviour
             {
                 selection = 2;
             }
+        }
+        player.SendMessage("checkFunction", selection);
+        */
         }
     }
 

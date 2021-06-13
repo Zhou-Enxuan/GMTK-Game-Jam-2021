@@ -6,7 +6,7 @@ public class HandBehavior : MonoBehaviour
 {
     [SerializeField] public float magneticForce = 0.5f;
     [SerializeField] public float magneticRadius = 5f;
-
+    private CharacterState state;
     public GameObject player;
     private Rigidbody2D rb;
 
@@ -18,6 +18,7 @@ public class HandBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
         player = GameObject.Find("MyRobot");
+        state = player.GetComponent<CharacterState>();
     }
 
     // Update is called once per frame
@@ -41,6 +42,8 @@ public class HandBehavior : MonoBehaviour
             rb.freezeRotation = true;
             rb.isKinematic = true;
             isHit = true;
+
+            state.detach(CharacterState.bodyPart.Arm);
         }
         else if(collision.transform.CompareTag("MovingPlat"))
         {
