@@ -22,7 +22,6 @@ public class CharacterMovement : MonoBehaviour
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
-    private bool HandDetached = false;
 
     [SerializeField] private float maxMagnetRange = 150; 
     private GameObject magneticCenter;
@@ -190,7 +189,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void checkMagneticPull(){
-        if(magneticCenter != null && HandDetached){
+        if(magneticCenter != null && !state.isAttached(CharacterState.bodyPart.Arm)){
             float radius = magneticCenter.GetComponent<HandBehavior>().magneticRadius;
             Vector2 distance = magneticCenter.transform.position - transform.position;
             if(distance.magnitude > maxMagnetRange){

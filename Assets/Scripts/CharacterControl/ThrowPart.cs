@@ -43,6 +43,7 @@ public class ThrowPart : MonoBehaviour
     public event Action Callback;
 
     public float HeadBack = 5;
+    public float ArmBack = 5;
 
     private Animator anim;
 
@@ -104,6 +105,7 @@ public class ThrowPart : MonoBehaviour
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
         GetComponent<CharacterMovement>().freeze = false;
+        StartCoroutine(ArmBackCount());
     }
 
     //shoot off the head
@@ -206,7 +208,6 @@ public class ThrowPart : MonoBehaviour
     }
 
     private void Reset(){
-        Debug.Log(state.isAttached(CharacterState.bodyPart.Leg));
         switch (partSelected)
         {
             case 0: //arm
@@ -236,6 +237,14 @@ public class ThrowPart : MonoBehaviour
         transform.Find("Head").gameObject.SetActive(true);
         state.attach(CharacterState.bodyPart.Head);
         GetComponent<CharacterMovement>().isOutControl = false;
+    }
+    IEnumerator ArmBackCount()
+    {
+        Debug.Log(lefthand.activeSelf);
+        yield return new WaitForSeconds(ArmBack);
+        if(!lefthand.activeSelf){
+            pickHand();
+        }
     }
 
     //shoot off the leg
