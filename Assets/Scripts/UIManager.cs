@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    //public static UIManager instance;
 
     [Header("Components")]
     public CharacterState state;
@@ -30,15 +30,15 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-        {
-            GameObject.Destroy(instance);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
+        //if (instance != null)
+        //{
+        //    GameObject.Destroy(instance);
+        //}
+        //else
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(this);
+        //}
 
         pauseText.SetActive(false);
     }
