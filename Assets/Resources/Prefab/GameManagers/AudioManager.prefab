@@ -45,7 +45,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainTheme
-    clip: {fileID: 8300000, guid: 5c38839e35bbd99438c8fd98ffb02cdc, type: 3}
+    clip: {fileID: 8300000, guid: e2518b82cc6335248a37a371d020f677, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: walkcycle
+    clip: {fileID: 8300000, guid: bce75bfea6e915f44b1d65bd43a508ca, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: jump
+    clip: {fileID: 8300000, guid: c725f445f46465345b0984652cbc18f8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: land
+    clip: {fileID: 8300000, guid: 4c017e94356913247925917fac403853, type: 3}
     volume: 1
     pitch: 1
     loop: 1
