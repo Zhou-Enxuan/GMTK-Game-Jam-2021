@@ -4546,11 +4546,6 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 54750725}
-    - target: {fileID: 4731643698676534965, guid: 346d8ed8e1452814c95f87eed76d0ea9,
-        type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 7168
-      objectReference: {fileID: 0}
     - target: {fileID: 6222565825858453385, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
       propertyPath: m_RootOrder
