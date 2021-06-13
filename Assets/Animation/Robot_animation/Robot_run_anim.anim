@@ -1011,7 +1011,19 @@ AnimationClip:
     path: bone_1
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 4a55d238c797704418d0aeefb3d27cb1, type: 3}
+    - time: 0.1
+      value: {fileID: -322254781633468915, guid: 478f0b9411aee6a4fb123a6cce624143,
+        type: 3}
+    - time: 0.53333336
+      value: {fileID: 21300000, guid: 4a55d238c797704418d0aeefb3d27cb1, type: 3}
+    attribute: m_Sprite
+    path: RightHand/R_hand
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -1125,13 +1137,23 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 1541022748
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
       path: 0
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 4a55d238c797704418d0aeefb3d27cb1, type: 3}
+    - {fileID: -322254781633468915, guid: 478f0b9411aee6a4fb123a6cce624143, type: 3}
+    - {fileID: 21300000, guid: 4a55d238c797704418d0aeefb3d27cb1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
