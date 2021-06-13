@@ -21,6 +21,7 @@ public class WinningOnstacle : MonoBehaviour
     IEnumerator startCount()
     {
         yield return new WaitForSeconds(2f);
+        UIManager.instance.victoryText.SetActive(false);
         SceneManager.LoadScene(NextScene);
     }
 }
