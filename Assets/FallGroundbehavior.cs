@@ -12,15 +12,14 @@ public class FallGroundbehavior : StateMachineBehaviour
     {
         player = GameObject.Find("MyRobot");
         rb = player.GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.zero;
         player.GetComponent<CharacterMovement>().freeze = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
