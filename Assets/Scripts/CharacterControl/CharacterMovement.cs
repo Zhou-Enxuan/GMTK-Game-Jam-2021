@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Components")]
     private Rigidbody2D rb;
+    private CharacterState state;
 
     [Header("Movement variables")]
     
@@ -21,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
+    private bool HandDetached = false;
 
     [SerializeField] private float maxMagnetRange = 150; 
     private GameObject magneticCenter;
@@ -52,12 +54,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void Start()
     {
+        state = gameObject.GetComponent<CharacterState>(); 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        isLimping = !state.isAttached(CharacterState.bodyPart.Leg);
         CheckCollision();
         horizontalDirection = GetInput().x;
         if (!freeze && canJump && !isOutControl)
@@ -92,7 +96,6 @@ public class CharacterMovement : MonoBehaviour
         }
         checkMagneticPull();
         AniamtionsVariableCheck();
-
     }
 
     private Vector2 GetInput()
@@ -111,7 +114,6 @@ public class CharacterMovement : MonoBehaviour
         anim.SetFloat("Speed", Mathf.Abs(movement));
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
 
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
         {
@@ -179,7 +181,6 @@ public class CharacterMovement : MonoBehaviour
         }
         Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-
     }
 
     public void Respawn()
@@ -188,13 +189,8 @@ public class CharacterMovement : MonoBehaviour
         transform.position = respawnPoint.transform.position;
     }
 
-    public void toggleLimping()
-    {
-        isLimping = !isLimping;
-    }
-
     private void checkMagneticPull(){
-        if(magneticCenter != null){
+        if(magneticCenter != null && HandDetached){
             float radius = magneticCenter.GetComponent<HandBehavior>().magneticRadius;
             Vector2 distance = magneticCenter.transform.position - transform.position;
             if(distance.magnitude > maxMagnetRange){
@@ -234,5 +230,4 @@ public class CharacterMovement : MonoBehaviour
     //    freeze = false;
     //    anim.ResetTrigger("Jump");
     //}
-
 }

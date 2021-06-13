@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class ThrowPart : MonoBehaviour
 {
+    private CharacterState state;
     [SerializeField]
     private GameObject partToThrow;
 
     [SerializeField]
     private Transform myBodyPart;
+    private int partSelected;
 
     [SerializeField]
     private float lunchForce;
@@ -43,6 +45,7 @@ public class ThrowPart : MonoBehaviour
 
     void Start()
     {
+        state = gameObject.GetComponent<CharacterState>();
         myBodyPart = transform.Find("LeftHand");
         Debug.Log(myBodyPart);
         shotPoint = myBodyPart;
@@ -53,7 +56,6 @@ public class ThrowPart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkFunction();
         if (myBodyPart.gameObject.activeSelf)
         {
             //if (myBodyPart.name == "LeftHand")
@@ -86,7 +88,7 @@ public class ThrowPart : MonoBehaviour
             //    }
 
             //}
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && myBodyPart.gameObject.activeSelf)
             {
                Callback?.Invoke();
             }
@@ -102,7 +104,8 @@ public class ThrowPart : MonoBehaviour
        
         anim.SetTrigger("ShotHand");
         GetComponent<CharacterMovement>().freeze = true;
-        //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
+        //state.detach(CharacterState.bodyPart.Arm);
+        GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
     }
 
     private void ShootArmActivate()
@@ -114,13 +117,13 @@ public class ThrowPart : MonoBehaviour
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
         GetComponent<CharacterMovement>().freeze = false;
-
     }
 
     //shoot off the head
     private void ShootHead()
     {
         myBodyPart.gameObject.SetActive(false);
+        state.detach(CharacterState.bodyPart.Head);
         GetComponent<CharacterMovement>().isOutControl = true; 
         StartCoroutine(HeadBackCount());
 
@@ -134,7 +137,7 @@ public class ThrowPart : MonoBehaviour
         breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
         breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
         breakLeg.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        GetComponent<CharacterMovement>().toggleLimping();
+        state.detach(CharacterState.bodyPart.Leg);
         myBodyPart.gameObject.SetActive(false);
         GetComponent<CharacterMovement>().isOnLeg = false;
     }
@@ -149,13 +152,16 @@ public class ThrowPart : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 10;
         GetComponent<CharacterMovement>().stopMagneticPull();
         anim.ResetTrigger("ShotHand");
+        state.attach(CharacterState.bodyPart.Arm);
+
         //GameObject.Find("Main Camera").GetComponent<mainCamera>().restoreFollow();
     }
 
     //check which selection we have and set up the correct behavior
-    private void checkFunction()
+    private void checkFunction(int selection)
     {
-        switch (UIManager.instance.selection)
+        partSelected = selection;
+        switch (partSelected)
         {
             case 0:
                 partToThrow = Resources.Load<GameObject>("Prefab/Robot/Part/LeftHand");
@@ -177,7 +183,6 @@ public class ThrowPart : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     //retract player to the hand
@@ -207,9 +212,26 @@ public class ThrowPart : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            pickHand();
-            Destroy(breakHand.gameObject);
-            breakHand = null;
+            switch (partSelected)
+            {
+                case 0: //arm
+                    if(!state.isAttached(CharacterState.bodyPart.Arm)){
+                        pickHand();
+                        Destroy(breakHand.gameObject);
+                        breakHand = null;
+                    }
+                    break;
+                case 1: //head
+                    break;
+                case 2: //leg
+                    if(!state.isAttached(CharacterState.bodyPart.Leg)){
+                        pickUpLeg();
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 
@@ -217,6 +239,7 @@ public class ThrowPart : MonoBehaviour
     {
         yield return new WaitForSeconds(HeadBack);
         transform.Find("Head").gameObject.SetActive(true);
+        state.attach(CharacterState.bodyPart.Head);
         GetComponent<CharacterMovement>().isOutControl = false;
     }
 
@@ -227,10 +250,7 @@ public class ThrowPart : MonoBehaviour
     {
         Debug.Log("leg pick up");
         transform.Find("LeftLeg").gameObject.SetActive(true);
-        if (GetComponent<CharacterMovement>().isLimping){
-            GetComponent<CharacterMovement>().toggleLimping();
-        }
-        
+        state.attach(CharacterState.bodyPart.Leg);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
