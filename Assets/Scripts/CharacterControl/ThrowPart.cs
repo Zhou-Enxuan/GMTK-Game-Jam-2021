@@ -19,7 +19,9 @@ public class ThrowPart : MonoBehaviour
 
     [SerializeField] private GameObject lefthand;
 
-    [SerializeField] Transform HandShootingPoint;
+    [SerializeField] private Transform HandShootingPoint;
+
+    [SerializeField] private float angel;
 
     // Start is called before the first frame update
 
@@ -59,11 +61,11 @@ public class ThrowPart : MonoBehaviour
             Vector2 partPosition = lefthand.transform.position;
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = mousePosition - partPosition;
-            if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < 45)
+            if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < angel)
             {
                 lefthand.transform.right = direction;
             }
-            else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < 45)
+            else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < angel)
             {
                 lefthand.transform.right = -direction;
             }
@@ -99,6 +101,7 @@ public class ThrowPart : MonoBehaviour
     {
        
         anim.SetTrigger("ShotHand");
+        GetComponent<CharacterMovement>().freeze = true;
         //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
     }
 
@@ -110,6 +113,8 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().startMagneticPull(breakHand, breakHand.GetComponent<HandBehavior>().magneticForce);
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
+        GetComponent<CharacterMovement>().freeze = false;
+
     }
 
     //shoot off the head
