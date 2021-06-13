@@ -58,7 +58,7 @@ public class ThrowPart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkFunction();
+        //checkFunction();
         Vector2 partPosition = lefthand.transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - partPosition;

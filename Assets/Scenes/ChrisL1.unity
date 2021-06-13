@@ -5051,6 +5051,7 @@ MonoBehaviour:
   cameraWidth: 0
   offset: {x: 0, y: 0, z: 0}
   margin: 0
+  followTime: 1
   player: {fileID: 1318165967}
   interpolationRatio: 2
   x_min: 0
