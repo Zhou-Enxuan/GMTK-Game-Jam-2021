@@ -116217,6 +116217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndustrialTile_64
       objectReference: {fileID: 0}
+    - target: {fileID: 7363556821046393264, guid: c5f8ddb0a4eecb540a7d09eb39cd0722,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7363556821046393265, guid: c5f8ddb0a4eecb540a7d09eb39cd0722,
         type: 3}
       propertyPath: m_Size.x
