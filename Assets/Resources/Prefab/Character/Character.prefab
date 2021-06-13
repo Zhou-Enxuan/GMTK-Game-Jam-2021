@@ -131,7 +131,6 @@ MonoBehaviour:
   m_MovementSmoothing: 0.141
   jumpForce: 30
   airLinearDrag: 0
-  jumpFreeze: 0
   grpundRaycastLength: 2.16
   whatIsGround:
     serializedVersion: 2
@@ -143,7 +142,6 @@ MonoBehaviour:
     m_Bits: 2048
   isOutControl: 0
   isConnecting: 0
-  freeze: 0
 --- !u!114 &7569651803302991948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,12 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToThrow: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
     type: 3}
-  myBodyPart: {fileID: 0}
   lunchForce: 1000
   shotPoint: {fileID: 2051266693699368622}
-  lefthand: {fileID: 0}
-  HandShootingPoint: {fileID: 0}
-  angel: 0
   retractAcce: 10
   breakHand: {fileID: 0}
   breakLeg: {fileID: 0}
