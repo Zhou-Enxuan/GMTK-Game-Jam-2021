@@ -45,7 +45,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainTheme
-    clip: {fileID: 8300000, guid: 5c38839e35bbd99438c8fd98ffb02cdc, type: 3}
+    clip: {fileID: 8300000, guid: e2518b82cc6335248a37a371d020f677, type: 3}
+    volume: 0.739
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: WalkCycle
+    clip: {fileID: 8300000, guid: bce75bfea6e915f44b1d65bd43a508ca, type: 3}
+    volume: 0.812
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: c725f445f46465345b0984652cbc18f8, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Land
+    clip: {fileID: 8300000, guid: 4c017e94356913247925917fac403853, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: HandProjection
+    clip: {fileID: 8300000, guid: 98a87b43fe63de548b543d4115c9c857, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: HandAttraction
+    clip: {fileID: 8300000, guid: 98a87b43fe63de548b543d4115c9c857, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BreakCardboard
+    clip: {fileID: 8300000, guid: 9aa0f835f57b2a5468e1cbc4b49ed1d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BreakScraps
+    clip: {fileID: 8300000, guid: 939eb5ee32d0d4a49a99ad9335fe04c9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: breakmachine
+    clip: {fileID: 8300000, guid: 125f56f6af7266a48ab833d38ec0159f, type: 3}
+    volume: 0.806
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: fallingsound
+    clip: {fileID: 8300000, guid: 01bdf10f200571c4ab05af36e7ee730b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: headpop
+    clip: {fileID: 8300000, guid: 5c323acf326ecbc429b86ece15de8b7d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BreakVent
+    clip: {fileID: 8300000, guid: 8b949e9be829b2640ae0b020b9fb1f29, type: 3}
+    volume: 0.846
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: WalkChargePanic
+    clip: {fileID: 8300000, guid: a87a7d23adecb254d9bd6fd1807f0bc4, type: 3}
+    volume: 0.913
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: LegProjection
+    clip: {fileID: 8300000, guid: 11d1051363103344bbffe11557d506cd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: PartReclip
+    clip: {fileID: 8300000, guid: dba773b0640c96c49a455344f5e7aed2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: 974a846acec853a4680b8054db50300b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DoorClose
+    clip: {fileID: 8300000, guid: fb7a079da5d1eaa4c81caa73f18fe63f, type: 3}
     volume: 1
     pitch: 1
     loop: 1
