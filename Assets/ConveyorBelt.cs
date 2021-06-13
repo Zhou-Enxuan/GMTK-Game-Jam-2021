@@ -21,7 +21,6 @@ public class ConveyorBelt : MonoBehaviour
         {
             //rb.velocity = new Vector2(speed, 0);
             rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
-            Debug.Log(rb.gameObject.GetComponent<CharacterMovement>().isGrounded);
         }
     }
 
