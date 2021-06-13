@@ -9,10 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5020741784424020956}
-  - component: {fileID: 7370788939449625255}
-  - component: {fileID: 407284442224932712}
-  - component: {fileID: 6712807642842792006}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: LeftLeg
   m_TagString: Leg
   m_Icon: {fileID: 0}
@@ -34,65 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7370788939449625255
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286756395693626336}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.8499377, y: -0.020538926}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 6.002896, y: 1.1095402}
-  m_EdgeRadius: 0
---- !u!50 &407284442224932712
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286756395693626336}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &6712807642842792006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286756395693626336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee4c8ae9f63b144a481bd3ef19cacc0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2309142500512426814
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6292059755093483035}
   - component: {fileID: 7493987480184982091}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: LegSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 2309142500512426814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0102, y: 1.0721, z: 1}
   m_Children:
   - {fileID: 7988879529151076998}
   - {fileID: 8209996919220808984}
@@ -156,7 +94,7 @@ GameObject:
   - component: {fileID: 7988879529151076998}
   - component: {fileID: 6142268987612584082}
   - component: {fileID: 656736454750045361}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: L_feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +156,7 @@ SpriteRenderer:
   m_SortingOrder: 7
   m_Sprite: {fileID: -8331886596986086517, guid: 478f0b9411aee6a4fb123a6cce624143,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3882353, g: 0.4392157, b: 0.5764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -244,8 +182,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 0}
   m_Bounds:
-    m_Center: {x: -0.2923479, y: 0.47182602, z: 0}
-    m_Extent: {x: 0.34338707, y: 0.47844046, z: 0}
+    m_Center: {x: 4.650076, y: -6.739932, z: 0}
+    m_Extent: {x: 2.3690104, y: 1.2563426, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8877511184084408149
@@ -259,7 +197,7 @@ GameObject:
   - component: {fileID: 8209996919220808984}
   - component: {fileID: 7606634151691149535}
   - component: {fileID: 1262752928764024173}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: L_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +259,7 @@ SpriteRenderer:
   m_SortingOrder: 7
   m_Sprite: {fileID: -6496106294543869297, guid: 478f0b9411aee6a4fb123a6cce624143,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3882353, g: 0.4392157, b: 0.5764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -344,9 +282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RootBone: {fileID: 0}
-  m_BoneTransforms: []
+  m_BoneTransforms:
+  - {fileID: 0}
   m_Bounds:
-    m_Center: {x: 0.19874632, y: 0.5848359, z: 0}
-    m_Extent: {x: 0.6701888, y: 0.64990056, z: 0}
+    m_Center: {x: 3.579912, y: -5.310628, z: 0}
+    m_Extent: {x: 3.1092362, y: 2.9090812, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
