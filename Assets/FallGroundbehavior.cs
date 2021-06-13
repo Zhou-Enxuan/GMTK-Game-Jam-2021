@@ -25,7 +25,7 @@ public class FallGroundbehavior : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //player.GetComponent<CharacterMovement>().freeze = false;
-        player.GetComponent<CharacterMovement>().jumpFreeze = 0.3f;
+        player.GetComponent<CharacterMovement>().jumpFreeze = 0f;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
