@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float linearDrag;
     [SerializeField] private float limpingSpeedModifier = 0.5f;
     private float horizontalDirection;
+    public Vector3 thisIsTheScaleNow;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
@@ -44,9 +45,12 @@ public class CharacterMovement : MonoBehaviour
 
     public bool isConnecting;
 
+    private Animator anim;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -95,17 +99,18 @@ public class CharacterMovement : MonoBehaviour
         }
         Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
+        anim.SetFloat("Speed", Mathf.Abs(movement));
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
 
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
         else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
         {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(-thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
     }
 
@@ -124,6 +129,7 @@ public class CharacterMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
+        Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
 
@@ -196,7 +202,6 @@ public class CharacterMovement : MonoBehaviour
 
     public void stopMagneticPull(){
         magneticCenter = null;
-    }
-
+    }  
 
 }

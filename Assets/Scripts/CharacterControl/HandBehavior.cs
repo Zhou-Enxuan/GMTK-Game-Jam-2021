@@ -17,7 +17,7 @@ public class HandBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
-        player = GameObject.Find("Character");
+        player = GameObject.Find("MyRobot");
     }
 
     // Update is called once per frame

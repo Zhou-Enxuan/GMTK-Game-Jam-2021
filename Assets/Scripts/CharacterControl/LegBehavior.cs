@@ -15,7 +15,7 @@ public class LegBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
-        player = GameObject.Find("Character");
+        player = GameObject.Find("MyRobot");
     }
 
     // Update is called once per frame
@@ -57,7 +57,6 @@ public class LegBehavior : MonoBehaviour
         
         if (collision.transform.CompareTag("Player"))
         {
-            Debug.Log("it is charatcer");
             if (player.GetComponent<CharacterMovement>().isOnLeg)
             {
                 player.GetComponent<ThrowPart>().pickUpLeg();

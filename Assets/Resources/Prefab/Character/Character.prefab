@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7569651803302991943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7569651803721097439}
   - {fileID: 7569651803521647597}
@@ -121,15 +121,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
-  movementSpeed: 40
+  movementSpeed: 80
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
+  thisIsTheScaleNow: {x: 1, y: 1, z: 1}
   isLimping: 0
+  maxMagnetRange: 150
   m_MovementSmoothing: 0.141
   jumpForce: 30
-  airLinearDrag: 10
-  grpundRaycastLength: 1.4
+  airLinearDrag: 0
+  grpundRaycastLength: 2.16
   whatIsGround:
     serializedVersion: 2
     m_Bits: 3072
@@ -155,7 +157,7 @@ MonoBehaviour:
   partToThrow: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
     type: 3}
   lunchForce: 1000
-  shotPoint: {fileID: 0}
+  shotPoint: {fileID: 2051266693699368622}
   retractAcce: 10
   breakHand: {fileID: 0}
   breakLeg: {fileID: 0}
