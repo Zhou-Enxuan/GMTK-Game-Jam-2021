@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        UIManager.instance.WinText();
+        //UIManager.instance.WinText();
     }
 
 

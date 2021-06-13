@@ -8,11 +8,21 @@ public class WinningOnstacle : MonoBehaviour
     [SerializeField] private string NextScene;
     // Start is called before the first frame update
 
+    private GameObject UI;
+
+    private GameObject Text;
+    void Start()
+    {
+        UI = GameObject.Find("UI");
+        Text = UI.transform.Find("Winning").gameObject;
+        Text.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.CompareTag("Player"))
         {
-            UIManager.instance.victoryText.SetActive(true);
+            Text.SetActive(true);
             StartCoroutine(startCount());
         }
         
@@ -21,7 +31,7 @@ public class WinningOnstacle : MonoBehaviour
     IEnumerator startCount()
     {
         yield return new WaitForSeconds(2f);
-        UIManager.instance.victoryText.SetActive(false);
+        Text.SetActive(false);
         SceneManager.LoadScene(NextScene);
     }
 }
