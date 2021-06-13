@@ -1801,6 +1801,26 @@ PrefabInstance:
       objectReference: {fileID: 5544398611911436698}
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
+      propertyPath: m_Bounds.m_Center.x
+      value: 4.697507
+      objectReference: {fileID: 0}
+    - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: -7.2258816
+      objectReference: {fileID: 0}
+    - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.3931744
+      objectReference: {fileID: 0}
+    - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 1.346925
+      objectReference: {fileID: 0}
+    - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
       propertyPath: m_BoneTransforms.Array.data[0]
       value: 
       objectReference: {fileID: 5544398611911436698}
@@ -1809,6 +1829,26 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 2181873602022068487}
+    - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.x
+      value: 3.6137345
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: -5.6672807
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 3.1409507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 3.1188264
+      objectReference: {fileID: 0}
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_BoneTransforms.Array.data[0]
@@ -1873,6 +1913,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292059755093483035, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292059755093483035, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606634151691149535, guid: cce8defb62f5c884ab47183a58ff7931,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce8defb62f5c884ab47183a58ff7931, type: 3}
