@@ -41,16 +41,17 @@ public class UIManager : MonoBehaviour
         }
 
         pauseText.SetActive(false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         if (SceneManager.GetActiveScene().name != "MainMenuScene" && SceneManager.GetActiveScene().name != "CreditsScene")
         {
             player = GameObject.Find("MyRobot");
             state = player.GetComponent<CharacterState>();
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         /*
         partChoose = new string[3];
         partChoose[0] = "Arm";
