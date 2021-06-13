@@ -32,6 +32,8 @@ public class ThrowPart : MonoBehaviour
 
     public GameObject breakLeg;
 
+    public GameObject breakHead;
+
     private bool canRetract;
 
     public event Action Callback;
@@ -117,8 +119,11 @@ public class ThrowPart : MonoBehaviour
     //shoot off the head
     private void ShootHead()
     {
+        GetComponent<CharacterMovement>().isOutControl = true;
+        breakHead = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakHead.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        breakHead.transform.parent = this.transform;
         myBodyPart.gameObject.SetActive(false);
-        GetComponent<CharacterMovement>().isOutControl = true; 
         StartCoroutine(HeadBackCount());
 
     }
@@ -163,7 +168,8 @@ public class ThrowPart : MonoBehaviour
             case 1:
                 partToThrow = Resources.Load<GameObject>("Prefab/Robot/Part/Head");
                 myBodyPart = transform.Find("Head");
-                Callback = ShootHead;
+                shotPoint = transform.Find("HeadShotPoint");
+                 Callback = ShootHead;
                 break;
             case 2:
                 partToThrow = Resources.Load<GameObject>("Prefab/Robot/Part/LeftLeg");
@@ -230,6 +236,14 @@ public class ThrowPart : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.CompareTag("Boxes") && GetComponent<CharacterMovement>().isOutControl)
+        {
+            collision.transform.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!collision.transform.CompareTag("Player") && GetComponent<CharacterMovement>().isConnecting && !GetComponent<CharacterMovement>().isGrounded)
@@ -239,5 +253,10 @@ public class ThrowPart : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 10;
             canRetract = false;
         }
+    }
+
+    private void KillHead()
+    {
+        Destroy(breakHead.gameObject);
     }
 }
