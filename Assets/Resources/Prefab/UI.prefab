@@ -848,6 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13540bd3088364f348410094c423495e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
   selectPartText: {fileID: 7150136316019235673}
   player: {fileID: 7569651803302991943, guid: 652e25902f92647a3a56f747fc421508, type: 3}
   victoryText: {fileID: 6779328222472137920}
@@ -1041,18 +1042,18 @@ RectTransform:
   m_GameObject: {fileID: 5695607872635401295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.77862, y: 0.77862, z: 0.77862}
   m_Children:
   - {fileID: 3198247484696867970}
   - {fileID: 511728073}
   m_Father: {fileID: 1732391618617500192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -274}
-  m_SizeDelta: {x: -830.24316, y: -519.3773}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -460, y: -548.21}
+  m_SizeDelta: {x: 449.75684, y: 200.62268}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7044985589435509482
 CanvasRenderer:
   m_ObjectHideFlags: 0
