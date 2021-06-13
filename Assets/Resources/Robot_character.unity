@@ -213,6 +213,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1307607337498834296, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307607337498834296, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99827737
       objectReference: {fileID: 0}
@@ -340,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416384586877313408, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4416384586877313408, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
@@ -635,6 +645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: character_Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039479923981050143, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 346d8ed8e1452814c95f87eed76d0ea9, type: 3}
