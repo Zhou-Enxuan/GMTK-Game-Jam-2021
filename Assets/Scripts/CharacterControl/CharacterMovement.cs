@@ -47,6 +47,8 @@ public class CharacterMovement : MonoBehaviour
 
     private Animator anim;
 
+    public bool freeze = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
     {
         CheckCollision();
         horizontalDirection = GetInput().x;
-        if (canJump && !isOutControl)
+        if (!freeze && canJump && !isOutControl)
         {
             Jump();
         }
@@ -65,7 +67,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isConnecting && !isOutControl)
+        if (!isConnecting && !isOutControl && !freeze)
         {
             MoveCharacter();
             if(isGrounded)
@@ -83,6 +85,7 @@ public class CharacterMovement : MonoBehaviour
             Running();
         }
         checkMagneticPull();
+        AniamtionsVariableCheck();
 
     }
 
@@ -202,6 +205,11 @@ public class CharacterMovement : MonoBehaviour
 
     public void stopMagneticPull(){
         magneticCenter = null;
-    }  
+    }
+
+    private void AniamtionsVariableCheck()
+    {
+        anim.SetBool("Limp", isLimping);
+    }
 
 }

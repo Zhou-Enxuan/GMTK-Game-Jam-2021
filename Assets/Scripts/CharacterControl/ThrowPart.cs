@@ -99,6 +99,7 @@ public class ThrowPart : MonoBehaviour
     {
        
         anim.SetTrigger("ShotHand");
+        GetComponent<CharacterMovement>().freeze = true;
         //GameObject.Find("Main Camera").GetComponent<mainCamera>().followPart(breakHand);
     }
 
@@ -110,6 +111,8 @@ public class ThrowPart : MonoBehaviour
         GetComponent<CharacterMovement>().startMagneticPull(breakHand, breakHand.GetComponent<HandBehavior>().magneticForce);
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
+        GetComponent<CharacterMovement>().freeze = false;
+
     }
 
     //shoot off the head
