@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] string sceneName;
 
+    private bool isPaused; 
+
     private void Awake()
     {
         if (instance != null)
@@ -30,12 +32,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
 
     public void Win()
     {
         UIManager.instance.WinText();
     }
+
+
 
 }
