@@ -267,11 +267,6 @@ public class ThrowPart : MonoBehaviour
         }
     }
 
-    private void KillHead()
-    {
-        Destroy(breakHead.gameObject);
-    }
-
     void OnTriggerEnter2D(Collider2D collision){
         canShootLeg = false;
         legCollisions++;
