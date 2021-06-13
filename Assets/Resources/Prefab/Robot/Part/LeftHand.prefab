@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: 5654840477750116246, guid: 478f0b9411aee6a4fb123a6cce624143,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2120782159744390726}
   - component: {fileID: 4710269436762747258}
   - component: {fileID: 7350178890971488726}
+  - component: {fileID: 7781827494267670938}
   m_Layer: 9
   m_Name: LeftHand
   m_TagString: Hand
@@ -236,3 +237,22 @@ PolygonCollider2D:
       - {x: 0.9140471, y: -1.1708375}
       - {x: 1.9439027, y: -1.3112828}
       - {x: 2.142143, y: -0.7672668}
+--- !u!95 &7781827494267670938
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072539885430694513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61c0c321608ea2f4b8ad1e503111339c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
