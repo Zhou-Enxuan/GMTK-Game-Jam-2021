@@ -99,7 +99,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1307607337498834296}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.65355164, y: -1.7200923, z: 0}
+=======
     m_Center: {x: -0.65355146, y: -1.7200923, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.20367007, y: 0.17500001, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -398,7 +402,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2181873602022068487}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: 0.933947, y: -1.4246562, z: 0}
+=======
     m_Center: {x: 0.9339469, y: -1.4246562, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.62819016, y: 0.62376523, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -593,7 +601,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4416384586877313408}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.6522217, y: -1.7195616, z: 0}
+=======
     m_Center: {x: -0.65222156, y: -1.7195616, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.8950001, y: 0.7963701, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -726,8 +738,13 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5771584049567650197}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.65234613, y: -1.7200917, z: 0.01}
+    m_Extent: {x: 1.177005, y: 1.055, z: 0}
+=======
     m_Center: {x: -0.6523465, y: -1.7200918, z: 0.01}
     m_Extent: {x: 1.177005, y: 1.0549998, z: 0}
+>>>>>>> Kirimaru
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4745016095148606562
@@ -860,8 +877,13 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5589935090154289622}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.5017067, y: -1.8101497, z: 0}
+    m_Extent: {x: 0.47916996, y: 0.2684998, z: 0}
+=======
     m_Center: {x: -0.50170684, y: -1.8101503, z: 0}
     m_Extent: {x: 0.47916996, y: 0.26849973, z: 0}
+>>>>>>> Kirimaru
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5090125974370349502
@@ -995,8 +1017,8 @@ MonoBehaviour:
   - {fileID: 1523654108329520259}
   - {fileID: 5780497021632646785}
   m_Bounds:
-    m_Center: {x: -0.6522218, y: -1.7178327, z: 0.02}
-    m_Extent: {x: 1.755, y: 1.2127398, z: 0}
+    m_Center: {x: -0.6522218, y: -1.7178326, z: 0.02}
+    m_Extent: {x: 1.755, y: 1.21274, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5631031590364208263
@@ -1098,8 +1120,13 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1307607337498834296}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.6522218, y: -1.720092, z: 0}
+    m_Extent: {x: 1.115, y: 0.8550002, z: 0}
+=======
     m_Center: {x: -0.6522218, y: -1.7200922, z: 0}
     m_Extent: {x: 1.115, y: 0.85500014, z: 0}
+>>>>>>> Kirimaru
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5778399997533715432
@@ -1232,7 +1259,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5798470828991563303}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.6540216, y: -1.7199172, z: 0}
+=======
     m_Center: {x: -0.6540216, y: -1.7199174, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.6230501, y: 0.9073154, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1507,7 +1538,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5544398611911436698}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: 0.93950164, y: -1.4451764, z: 0}
+=======
     m_Center: {x: 0.9395014, y: -1.4451764, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.47863492, y: 0.26938504, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1753,7 +1788,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4170677115595842102}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.5007068, y: -1.8096657, z: 0}
+=======
     m_Center: {x: -0.50070727, y: -1.8096654, z: 0}
+>>>>>>> Kirimaru
     m_Extent: {x: 0.6281699, y: 0.62391496, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1856,7 +1895,11 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5771584049567650197}
   m_Bounds:
+<<<<<<< HEAD
+    m_Center: {x: -0.6494913, y: -1.7200918, z: 0.01}
+=======
     m_Center: {x: -0.6494918, y: -1.7200918, z: 0.01}
+>>>>>>> Kirimaru
     m_Extent: {x: 2.4622698, y: 1.875, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1958,6 +2001,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2558122796734449912}
+  - component: {fileID: 1916616348}
+  - component: {fileID: 1916616349}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -1982,6 +2027,34 @@ Transform:
   m_Father: {fileID: 6222565825858453385}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1916616348
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818145103182642836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.105591774, y: 2.3145962}
+  m_Size: {x: 4.5399494, y: 7.4635735}
+  m_Direction: 0
+--- !u!114 &1916616349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818145103182642836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a9d26a84980524ab5e25b49dbf6eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8889199125986019767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,17 +2175,23 @@ MonoBehaviour:
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
+<<<<<<< HEAD
+  climbingSpeedModifier: 0.5
+  hangingSpeedModifier: 0.5
+  thisIsTheScaleNow: {x: 0.5, y: 0.5, z: 0.5}
+=======
   thisIsTheScaleNow: {x: 0.2, y: 0.2, z: 0.2}
+>>>>>>> Kirimaru
   isLimping: 0
   maxMagnetRange: 150
   m_MovementSmoothing: 0.05
-  jumpForce: 35
-  airLinearDrag: 10
+  jumpForce: 40
+  airLinearDrag: 0
   jumpFreeze: 0
   grpundRaycastLength: 0.34
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 7168
   isGrounded: 0
   isOnLeg: 0
   whatIsLeg:
@@ -2146,6 +2225,7 @@ MonoBehaviour:
   breakLeg: {fileID: 0}
   breakHead: {fileID: 0}
   HeadBack: 2
+  ArmBack: 5
 --- !u!114 &8457959675716246399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,6 +2239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partSelected: 0
+  climbing: 0
+  hanging: 0
+  grounded: 1
 --- !u!1 &9014904687023343231
 GameObject:
   m_ObjectHideFlags: 0
