@@ -65,10 +65,10 @@ public class CharacterMovement : MonoBehaviour
             Jump();
         }
 
-        if(jumpFreeze > 0)
-        {
-            jumpFreeze -= Time.deltaTime;
-        }
+        //if(jumpFreeze > 0)
+        //{
+        //    jumpFreeze -= Time.deltaTime;
+        //}
     }
 
     private void FixedUpdate()
@@ -140,8 +140,8 @@ public class CharacterMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        anim.SetTrigger("Jump");
-        jumpFreeze = 2;
+        anim.SetBool("Jump", true);
+        //jumpFreeze = 2;
     }
 
     private void CheckCollision()
@@ -151,6 +151,7 @@ public class CharacterMovement : MonoBehaviour
         {
             isOnLeg = true;
         }
+        anim.SetBool("Jump", !isGrounded);
     }
 
     private void OnDrawGizmos()
@@ -222,16 +223,16 @@ public class CharacterMovement : MonoBehaviour
         anim.SetFloat("AirSpeed", rb.velocity.y);
     }
 
-    private void FallToGroundEnter()
-    {
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector2.zero, ref m_Velocity, m_MovementSmoothing);
-        freeze = true;
-    }
+    //private void FallToGroundEnter()
+    //{
+    //    rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector2.zero, ref m_Velocity, m_MovementSmoothing);
+    //    freeze = true;
+    //}
 
-    private void FallToGroundExit()
-    {
-        freeze = false;
-        anim.ResetTrigger("Jump");
-    }
+    //private void FallToGroundExit()
+    //{
+    //    freeze = false;
+    //    anim.ResetTrigger("Jump");
+    //}
 
 }
