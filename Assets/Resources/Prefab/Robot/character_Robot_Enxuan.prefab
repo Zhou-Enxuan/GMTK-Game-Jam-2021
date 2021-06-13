@@ -99,7 +99,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1307607337498834296}
   m_Bounds:
-    m_Center: {x: -0.65355164, y: -1.7200928, z: 0}
+    m_Center: {x: -0.65355146, y: -1.7200923, z: 0}
     m_Extent: {x: 0.20367007, y: 0.17500001, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2181873602022068487}
   m_Bounds:
-    m_Center: {x: 0.933947, y: -1.4246552, z: 0}
+    m_Center: {x: 0.9339469, y: -1.4246562, z: 0}
     m_Extent: {x: 0.62819016, y: 0.62376523, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4416384586877313408}
   m_Bounds:
-    m_Center: {x: -0.6522217, y: -1.7195628, z: 0}
+    m_Center: {x: -0.65222156, y: -1.7195616, z: 0}
     m_Extent: {x: 0.8950001, y: 0.7963701, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5771584049567650197}
   m_Bounds:
-    m_Center: {x: -0.65234613, y: -1.7200928, z: 0.01}
+    m_Center: {x: -0.6523465, y: -1.7200918, z: 0.01}
     m_Extent: {x: 1.177005, y: 1.0549998, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -860,8 +860,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5589935090154289622}
   m_Bounds:
-    m_Center: {x: -0.5017067, y: -1.8101492, z: 0}
-    m_Extent: {x: 0.47916996, y: 0.2684998, z: 0}
+    m_Center: {x: -0.50170684, y: -1.8101503, z: 0}
+    m_Extent: {x: 0.47916996, y: 0.26849973, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5090125974370349502
@@ -1098,8 +1098,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1307607337498834296}
   m_Bounds:
-    m_Center: {x: -0.6522218, y: -1.7200928, z: 0}
-    m_Extent: {x: 1.115, y: 0.8550001, z: 0}
+    m_Center: {x: -0.6522218, y: -1.7200922, z: 0}
+    m_Extent: {x: 1.115, y: 0.85500014, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &5778399997533715432
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5798470828991563303}
   m_Bounds:
-    m_Center: {x: -0.6540216, y: -1.7199177, z: 0}
+    m_Center: {x: -0.6540216, y: -1.7199174, z: 0}
     m_Extent: {x: 0.6230501, y: 0.9073154, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5544398611911436698}
   m_Bounds:
-    m_Center: {x: 0.93950164, y: -1.4451749, z: 0}
+    m_Center: {x: 0.9395014, y: -1.4451764, z: 0}
     m_Extent: {x: 0.47863492, y: 0.26938504, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4170677115595842102}
   m_Bounds:
-    m_Center: {x: -0.5007068, y: -1.8096681, z: 0}
+    m_Center: {x: -0.50070727, y: -1.8096654, z: 0}
     m_Extent: {x: 0.6281699, y: 0.62391496, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5771584049567650197}
   m_Bounds:
-    m_Center: {x: -0.6494913, y: -1.7200928, z: 0.01}
+    m_Center: {x: -0.6494918, y: -1.7200918, z: 0.01}
     m_Extent: {x: 2.4622698, y: 1.875, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2013,7 +2013,7 @@ Transform:
   m_GameObject: {fileID: 8889199125986019767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3640063286972299323}
   - {fileID: 4416384586877313408}
@@ -2098,18 +2098,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
-  movementSpeed: 50
+  movementSpeed: 25
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
-  thisIsTheScaleNow: {x: 0.5, y: 0.5, z: 0.5}
+  thisIsTheScaleNow: {x: 0.2, y: 0.2, z: 0.2}
   isLimping: 0
   maxMagnetRange: 150
   m_MovementSmoothing: 0.05
   jumpForce: 35
   airLinearDrag: 10
   jumpFreeze: 0
-  grpundRaycastLength: 0.98
+  grpundRaycastLength: 0.34
   whatIsGround:
     serializedVersion: 2
     m_Bits: 3072
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   shotPoint: {fileID: 7768789550869896213}
   lefthand: {fileID: 4222765958035871497}
   HandShootingPoint: {fileID: 7768789550869896213}
-  angel: 80
+  angel: 45
   retractAcce: 10
   breakHand: {fileID: 0}
   breakLeg: {fileID: 0}
