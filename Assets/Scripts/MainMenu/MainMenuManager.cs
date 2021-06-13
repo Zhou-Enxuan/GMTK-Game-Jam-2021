@@ -50,7 +50,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            if (SceneManager.GetActiveScene().name == "MainMenuScene" || SceneManager.GetActiveScene().name == "CreditsScene")
+            if (SceneManager.GetActiveScene().name == "Initial" || SceneManager.GetActiveScene().name == "CreditsScene")
             {
                 return;
             }

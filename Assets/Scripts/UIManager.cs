@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    //public static UIManager instance;
 
     [Header("Components")]
     public CharacterState state;
@@ -31,15 +31,15 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-        {
-            GameObject.Destroy(instance);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
+        //if (instance != null)
+        //{
+        //    GameObject.Destroy(instance);
+        //}
+        //else
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(this);
+        //}
 
         pauseText.SetActive(false);
         rButttonKey.SetActive(false);
@@ -53,22 +53,6 @@ public class UIManager : MonoBehaviour
             player = GameObject.Find("MyRobot");
             state = player.GetComponent<CharacterState>();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        /*
-        partChoose = new string[3];
-        partChoose[0] = "Arm";
-        partChoose[1] = "Head";
-        partChoose[2] = "Leg";
-
-        selection = 0;
-        player.SendMessage("checkFunction", selection);
-        */
-
     }
 
     // Update is called once per frame
