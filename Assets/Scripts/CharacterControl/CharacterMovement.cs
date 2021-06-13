@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Components")]
     private Rigidbody2D rb;
     private CharacterState state;
+    private float gravityScale;
 
     [Header("Movement variables")]
     
@@ -17,7 +18,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float linearDrag;
     [SerializeField] private float limpingSpeedModifier = 0.5f;
+    [SerializeField] private float climbingSpeedModifier = 0.5f;
+    [SerializeField] private float hangingSpeedModifier = 0.5f;
     private float horizontalDirection;
+    private float verticalDirection;
     public Vector3 thisIsTheScaleNow;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
@@ -56,6 +60,7 @@ public class CharacterMovement : MonoBehaviour
         state = gameObject.GetComponent<CharacterState>(); 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        gravityScale = this.GetComponent<Rigidbody2D>().gravityScale;
     }
 
     private void Update()
@@ -63,19 +68,20 @@ public class CharacterMovement : MonoBehaviour
         isLimping = !state.isAttached(CharacterState.bodyPart.Leg);
         CheckCollision();
         horizontalDirection = GetInput().x;
+        verticalDirection = GetInput().y;
         if (!freeze && canJump && !isOutControl)
         {
             Jump();
         }
-
-        //if(jumpFreeze > 0)
-        //{
-        //    jumpFreeze -= Time.deltaTime;
-        //}
     }
 
     private void FixedUpdate()
     {
+        if(state.climbing || state.hanging){
+            this.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+        } else {
+            this.GetComponent<Rigidbody2D>().gravityScale = gravityScale;
+        }
         if (!isConnecting && !isOutControl && !freeze)
         {
             MoveCharacter();
@@ -104,16 +110,36 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
+        float vMovement = 0;
+        //Horizontal movement
         float movement = horizontalDirection * movementSpeed * Time.fixedDeltaTime;
         if(isLimping){
             movement = movement * limpingSpeedModifier;
         }
-        Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
+        if(state.hanging){
+            movement = movement * hangingSpeedModifier;
+        }
+
+        //Vertical movement
+        if(state.climbing){
+            vMovement = verticalDirection * movementSpeed * climbingSpeedModifier * Time.fixedDeltaTime;
+            if(isLimping){
+                vMovement = movement * limpingSpeedModifier;
+            }
+        }
+
+        if(vMovement == 0){
+            vMovement = rb.velocity.y;
+        } else {
+            vMovement = vMovement * 10f;
+        }
+
+        Vector3 targetVelocity = new Vector2(movement * 10f, vMovement);
         anim.SetFloat("Speed", Mathf.Abs(movement));
-
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-
+        
+        //Facing Direction
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
         {
             transform.localScale = new Vector3(thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
@@ -138,7 +164,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
+        //rb.velocity = new Vector2(rb.velocity.x, 0);
         Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         anim.SetBool("Jump", true);
