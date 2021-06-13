@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -45,8 +46,11 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("MyRobot");
-        state = player.GetComponent<CharacterState>(); 
+        if (SceneManager.GetActiveScene().name != "MainMenuScene" && SceneManager.GetActiveScene().name != "CreditsScene")
+        {
+            player = GameObject.Find("MyRobot");
+            state = player.GetComponent<CharacterState>();
+        }
         /*
         partChoose = new string[3];
         partChoose[0] = "Arm";
@@ -62,8 +66,11 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        selectingPart();
-        CheckPause();
+        if (SceneManager.GetActiveScene().name != "MainMenuScene" && SceneManager.GetActiveScene().name != "CreditsScene")
+        {
+            selectingPart();
+            CheckPause();
+        }
     }
 
     private void CheckPause()

@@ -10,8 +10,12 @@ public class WinningOnstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        UIManager.instance.victoryText.SetActive(true);
-        StartCoroutine(startCount());
+        if(collision.transform.CompareTag("Player"))
+        {
+            UIManager.instance.victoryText.SetActive(true);
+            StartCoroutine(startCount());
+        }
+        
     }
 
     IEnumerator startCount()
