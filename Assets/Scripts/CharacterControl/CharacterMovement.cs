@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float linearDrag;
     [SerializeField] private float limpingSpeedModifier = 0.5f;
     private float horizontalDirection;
+    public Vector3 thisIsTheScaleNow;
     private bool changeDirection => (rb.velocity.x > 0 && horizontalDirection < 0) || (rb.velocity.x < 0 && horizontalDirection > 0);
     private Vector3 m_Velocity = Vector3.zero;
     public bool isLimping = false;
@@ -29,37 +30,50 @@ public class CharacterMovement : MonoBehaviour
     [Header("Jump Variables")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float airLinearDrag;
+    public float jumpFreeze = 0;
 
 
     [Header("Ground Collision Variables")]
     [SerializeField] private float grpundRaycastLength;
     [SerializeField] private LayerMask whatIsGround;
-    private bool canJump => Input.GetKey(KeyCode.W) && isGrounded;
+    private bool canJump => Input.GetKeyDown(KeyCode.W) && isGrounded && jumpFreeze <= 0;
     public bool isGrounded;
+    public bool isOnLeg;
+    [SerializeField] private LayerMask whatIsLeg;
 
     public bool isOutControl;
 
 
     public bool isConnecting;
 
+    private Animator anim;
+
+    public bool freeze = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         CheckCollision();
         horizontalDirection = GetInput().x;
-        if (canJump && !isOutControl)
+        if (!freeze && canJump && !isOutControl)
         {
             Jump();
         }
+
+        //if(jumpFreeze > 0)
+        //{
+        //    jumpFreeze -= Time.deltaTime;
+        //}
     }
 
     private void FixedUpdate()
     {
-        if(!isConnecting && !isOutControl)
+        if (!isConnecting && !isOutControl && !freeze)
         {
             MoveCharacter();
             if(isGrounded)
@@ -77,6 +91,7 @@ public class CharacterMovement : MonoBehaviour
             Running();
         }
         checkMagneticPull();
+        AniamtionsVariableCheck();
 
     }
 
@@ -93,17 +108,18 @@ public class CharacterMovement : MonoBehaviour
         }
         Vector3 targetVelocity = new Vector2(movement * 10f, rb.velocity.y);
 
+        anim.SetFloat("Speed", Mathf.Abs(movement));
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         //rb.AddForce(new Vector2(horizontalDirection, 0f) * movementSpeed);
 
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
         else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
         {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(-thisIsTheScaleNow.x, thisIsTheScaleNow.y, thisIsTheScaleNow.z);
         }
     }
 
@@ -122,12 +138,20 @@ public class CharacterMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
+        Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        anim.SetBool("Jump", true);
+        //jumpFreeze = 2;
     }
 
     private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
+        if(Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsLeg))
+        {
+            isOnLeg = true;
+        }
+        anim.SetBool("Jump", !isGrounded);
     }
 
     private void OnDrawGizmos()
@@ -192,5 +216,23 @@ public class CharacterMovement : MonoBehaviour
         magneticCenter = null;
     }
 
+    private void AniamtionsVariableCheck()
+    {
+        anim.SetBool("Limp", isLimping);
+        anim.SetBool("IsGround", isGrounded);
+        anim.SetFloat("AirSpeed", rb.velocity.y);
+    }
+
+    //private void FallToGroundEnter()
+    //{
+    //    rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector2.zero, ref m_Velocity, m_MovementSmoothing);
+    //    freeze = true;
+    //}
+
+    //private void FallToGroundExit()
+    //{
+    //    freeze = false;
+    //    anim.ResetTrigger("Jump");
+    //}
 
 }

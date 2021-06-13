@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051266693699368622}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: LegShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319152785731590675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.033, y: -0.901, z: 0}
+  m_LocalPosition: {x: 1.42, y: -1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7569651803302991936}
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7569651803302991943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7569651803721097439}
   - {fileID: 7569651803521647597}
@@ -121,19 +121,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
-  movementSpeed: 20
+  movementSpeed: 80
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
+  thisIsTheScaleNow: {x: 1, y: 1, z: 1}
   isLimping: 0
-  m_MovementSmoothing: 0.05
+  maxMagnetRange: 150
+  m_MovementSmoothing: 0.141
   jumpForce: 30
-  airLinearDrag: 10
-  grpundRaycastLength: 1.4
+  airLinearDrag: 0
+  grpundRaycastLength: 2.16
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   isGrounded: 0
+  isOnLeg: 0
+  whatIsLeg:
+    serializedVersion: 2
+    m_Bits: 2048
   isOutControl: 0
   isConnecting: 0
 --- !u!114 &7569651803302991948
@@ -151,7 +157,7 @@ MonoBehaviour:
   partToThrow: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
     type: 3}
   lunchForce: 1000
-  shotPoint: {fileID: 0}
+  shotPoint: {fileID: 2051266693699368622}
   retractAcce: 10
   breakHand: {fileID: 0}
   breakLeg: {fileID: 0}
@@ -238,6 +244,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightHand
       objectReference: {fileID: 0}
+    - target: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154943067633851054, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7154943067862328809, guid: 141bcac15f7f24ed4916fd09d46bb16f,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -272,6 +288,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154943067862328812, guid: 141bcac15f7f24ed4916fd09d46bb16f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3847451325945355113, guid: 141bcac15f7f24ed4916fd09d46bb16f, type: 3}
@@ -698,6 +719,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightLeg
       objectReference: {fileID: 0}
+    - target: {fileID: 4593621989516583205, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593621989516583205, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4593621991489482603, guid: 206f470d0ba374a2ea09834886e6c0e7,
         type: 3}
       propertyPath: m_ShapeTexture
@@ -738,6 +769,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4593621991489482606, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897171354870693447, guid: 206f470d0ba374a2ea09834886e6c0e7,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7569651803302991943}
     m_RemovedComponents:
     - {fileID: 2010901493642993062, guid: 206f470d0ba374a2ea09834886e6c0e7, type: 3}
     - {fileID: 5388205992829390649, guid: 206f470d0ba374a2ea09834886e6c0e7, type: 3}
