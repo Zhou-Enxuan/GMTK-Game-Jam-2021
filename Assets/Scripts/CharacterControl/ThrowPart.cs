@@ -34,6 +34,8 @@ public class ThrowPart : MonoBehaviour
 
     public GameObject breakLeg;
 
+    public GameObject breakHead;
+
     private bool canRetract;
 
     public event Action Callback;
@@ -56,44 +58,25 @@ public class ThrowPart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myBodyPart.gameObject.activeSelf)
+        checkFunction();
+        Vector2 partPosition = lefthand.transform.position;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - partPosition;
+        if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < angel)
         {
-            //if (myBodyPart.name == "LeftHand")
-            //{
-            Vector2 partPosition = lefthand.transform.position;
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = mousePosition - partPosition;
-            if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < angel)
-            {
-                lefthand.transform.right = direction;
-            }
-            else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < angel)
-            {
-                lefthand.transform.right = -direction;
-            }
-                
-
-            
-
-            //else
-            //{
-            //    if (transform.localScale.x > 0)
-            //    {
-            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, -90f);
-            //    }
-            //    else
-            //    {
-            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, 90f);
-
-            //    }
-
-            //}
-            if(Input.GetMouseButtonDown(0) && myBodyPart.gameObject.activeSelf)
-            {
-               Callback?.Invoke();
-            }
+            lefthand.transform.right = direction;
         }
-        if(breakHand != null)
+        else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < angel)
+        {
+            lefthand.transform.right = -direction;
+        }
+
+        if(Input.GetMouseButtonDown(0) && myBodyPart.gameObject.activeSelf)
+        {
+            Callback?.Invoke();
+        }
+
+        if (breakHand != null)
             Retract();
 
     }
@@ -122,6 +105,10 @@ public class ThrowPart : MonoBehaviour
     //shoot off the head
     private void ShootHead()
     {
+        GetComponent<CharacterMovement>().isOutControl = true;
+        breakHead = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+        breakHead.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        breakHead.transform.parent = this.transform;
         myBodyPart.gameObject.SetActive(false);
         state.detach(CharacterState.bodyPart.Head);
         GetComponent<CharacterMovement>().isOutControl = true; 
@@ -172,7 +159,8 @@ public class ThrowPart : MonoBehaviour
             case 1:
                 partToThrow = Resources.Load<GameObject>("Prefab/Robot/Part/Head");
                 myBodyPart = transform.Find("Head");
-                Callback = ShootHead;
+                shotPoint = transform.Find("HeadShotPoint");
+                 Callback = ShootHead;
                 break;
             case 2:
                 partToThrow = Resources.Load<GameObject>("Prefab/Robot/Part/LeftLeg");
@@ -253,6 +241,14 @@ public class ThrowPart : MonoBehaviour
         state.attach(CharacterState.bodyPart.Leg);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.CompareTag("Boxes") && GetComponent<CharacterMovement>().isOutControl)
+        {
+            collision.transform.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!collision.transform.CompareTag("Player") && GetComponent<CharacterMovement>().isConnecting && !GetComponent<CharacterMovement>().isGrounded)
@@ -262,5 +258,10 @@ public class ThrowPart : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 10;
             canRetract = false;
         }
+    }
+
+    private void KillHead()
+    {
+        Destroy(breakHead.gameObject);
     }
 }
