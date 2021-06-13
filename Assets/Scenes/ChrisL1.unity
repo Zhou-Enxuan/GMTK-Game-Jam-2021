@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 468995962}
   m_Layer: 0
   m_Name: Ladder3
-  m_TagString: Grabbable
+  m_TagString: Hangable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4575,7 +4575,7 @@ GameObject:
   - component: {fileID: 1575933264}
   m_Layer: 0
   m_Name: Ladder2
-  m_TagString: Grabbable
+  m_TagString: Hangable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

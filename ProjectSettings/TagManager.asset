@@ -10,6 +10,7 @@ TagManager:
   - Leg
   - MovingPlat
   - Boxes
+  - Hangable
   layers:
   - Default
   - TransparentFX
