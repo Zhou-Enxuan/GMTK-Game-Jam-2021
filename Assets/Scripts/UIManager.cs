@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject player;
 
     //Victory Placeholder
-    [SerializeField] private GameObject victoryText;
+    public GameObject victoryText;
 
     public int selection;
 
