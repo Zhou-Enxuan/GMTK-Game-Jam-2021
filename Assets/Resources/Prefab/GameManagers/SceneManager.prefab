@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb997c9797844044a8db086516eeca7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1Name: AioleWorkScene2UI
+  level1Name: Level_TutorialBlockout
   creditsName: CreditsScene
   mainMenuName: MainMenuScene
+  isPaused: 0
