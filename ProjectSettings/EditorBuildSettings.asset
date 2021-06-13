@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: e5aa90d4bc2e0784bb97e81d1de38333
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/ChrisL2.unity
     guid: a4d73b6b93e2c124fb5e3f098c8c5bca
   - enabled: 1
