@@ -3661,7 +3661,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7629182253420160226, guid: 346d8ed8e1452814c95f87eed76d0ea9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 346d8ed8e1452814c95f87eed76d0ea9, type: 3}
 --- !u!1 &1220214018
 GameObject:
@@ -5053,6 +5054,10 @@ MonoBehaviour:
   margin: 0
   player: {fileID: 1318165967}
   interpolationRatio: 2
+  x_min: 0
+  x_max: 0
+  y_min: 0
+  y_max: 0
 --- !u!1 &1814465355
 GameObject:
   m_ObjectHideFlags: 0
