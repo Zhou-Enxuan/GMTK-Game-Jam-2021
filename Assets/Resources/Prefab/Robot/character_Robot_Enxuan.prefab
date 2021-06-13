@@ -1452,7 +1452,7 @@ Transform:
   m_GameObject: {fileID: 8889199125986019767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 3640063286972299323}
   - {fileID: 4416384586877313408}
@@ -1540,7 +1540,7 @@ MonoBehaviour:
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
-  thisIsTheScaleNow: {x: 0.2, y: 0.2, z: 0.2}
+  thisIsTheScaleNow: {x: 0.5, y: 0.5, z: 0.5}
   isLimping: 0
   maxMagnetRange: 150
   m_MovementSmoothing: 0.05
@@ -1764,6 +1764,12 @@ PrefabInstance:
     - {fileID: 4710269436762747258, guid: dd5054d060222d643b5a81a8c7398c27, type: 3}
     - {fileID: 7350178890971488726, guid: dd5054d060222d643b5a81a8c7398c27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dd5054d060222d643b5a81a8c7398c27, type: 3}
+--- !u!4 &7768789550869896213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7624205875585886573, guid: dd5054d060222d643b5a81a8c7398c27,
+    type: 3}
+  m_PrefabInstance: {fileID: 152794968399017336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4919156707800741754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5069519088231023106, guid: dd5054d060222d643b5a81a8c7398c27,
@@ -1773,12 +1779,6 @@ Transform:
 --- !u!1 &4222765958035871497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4072539885430694513, guid: dd5054d060222d643b5a81a8c7398c27,
-    type: 3}
-  m_PrefabInstance: {fileID: 152794968399017336}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7768789550869896213 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7624205875585886573, guid: dd5054d060222d643b5a81a8c7398c27,
     type: 3}
   m_PrefabInstance: {fileID: 152794968399017336}
   m_PrefabAsset: {fileID: 0}
