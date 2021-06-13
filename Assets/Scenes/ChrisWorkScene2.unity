@@ -1977,6 +1977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4731643698676534965, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
+      propertyPath: grpundRaycastLength
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731643698676534965, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
       propertyPath: thisIsTheScaleNow.x
       value: 0.2
       objectReference: {fileID: 0}
@@ -2129,6 +2134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925116856686533176, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7957420076816715095, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}

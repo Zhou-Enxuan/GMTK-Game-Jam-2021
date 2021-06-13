@@ -1499,8 +1499,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.41425377, y: 2.0499578}
-  m_Size: {x: 4.2947865, y: 7.685528}
+  m_Offset: {x: -0.4142537, y: 2.2894907}
+  m_Size: {x: 4.2947865, y: 7.206462}
   m_Direction: 0
 --- !u!50 &5881496193765801457
 Rigidbody2D:
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   m_MovementSmoothing: 0.05
   jumpForce: 20
   airLinearDrag: 0
+  jumpFreeze: 0
   grpundRaycastLength: 0.43
   whatIsGround:
     serializedVersion: 2
