@@ -5,12 +5,10 @@ using UnityEngine;
 public class LegBehavior : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
-
+    private Rigidbody2D rb;    
     private bool isHit;
-
     private GameObject player;
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,8 +44,6 @@ public class LegBehavior : MonoBehaviour
             Debug.Log("isHit");
             isHit = true;
         }
-
-        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -65,6 +61,5 @@ public class LegBehavior : MonoBehaviour
                 player.GetComponent<CharacterMovement>().isOnLeg = false;
             }
         }
-        
     }
 }

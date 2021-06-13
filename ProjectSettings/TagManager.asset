@@ -9,6 +9,7 @@ TagManager:
   - Grabbable
   - Leg
   - MovingPlat
+  - Boxes
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Hand
   - Ground
   - Leg
-  - 
+  - Boxes
   - 
   - 
   - 
