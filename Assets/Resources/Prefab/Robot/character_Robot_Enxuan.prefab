@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
-  movementSpeed: 25
+  movementSpeed: 50
   maxSpeed: 12
   linearDrag: 10
   limpingSpeedModifier: 0.5
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   isLimping: 0
   maxMagnetRange: 150
   m_MovementSmoothing: 0.05
-  jumpForce: 20
+  jumpForce: 40
   airLinearDrag: 0
   jumpFreeze: 0
   grpundRaycastLength: 0.43
@@ -1802,22 +1802,22 @@ PrefabInstance:
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 4.697507
+      value: 0.9395014
       objectReference: {fileID: 0}
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -7.2258816
+      value: -1.4451764
       objectReference: {fileID: 0}
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 2.3931744
+      value: 0.47863492
       objectReference: {fileID: 0}
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.346925
+      value: 0.26938504
       objectReference: {fileID: 0}
     - target: {fileID: 656736454750045361, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
@@ -1832,22 +1832,22 @@ PrefabInstance:
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 3.6137345
+      value: 0.9339469
       objectReference: {fileID: 0}
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -5.6672807
+      value: -1.4246562
       objectReference: {fileID: 0}
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 3.1409507
+      value: 0.62819016
       objectReference: {fileID: 0}
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 3.1188264
+      value: 0.62376523
       objectReference: {fileID: 0}
     - target: {fileID: 1262752928764024173, guid: cce8defb62f5c884ab47183a58ff7931,
         type: 3}
