@@ -39,6 +39,7 @@ public class ThrowPart : MonoBehaviour
     public GameObject breakHead;
 
     private bool canRetract;
+    private Coroutine armCoroutine;
 
     public event Action Callback;
 
@@ -105,7 +106,9 @@ public class ThrowPart : MonoBehaviour
         breakHand.GetComponent<Rigidbody2D>().AddForce(breakHand.transform.right * lunchForce * (transform.localScale.x * 2));
         lefthand.SetActive(false);
         GetComponent<CharacterMovement>().freeze = false;
-        StartCoroutine(ArmBackCount());
+        if(armCoroutine!= null)
+            StopCoroutine(armCoroutine);
+        armCoroutine = StartCoroutine(ArmBackCount());
     }
 
     //shoot off the head
@@ -240,10 +243,12 @@ public class ThrowPart : MonoBehaviour
     }
     IEnumerator ArmBackCount()
     {
-        Debug.Log(lefthand.activeSelf);
         yield return new WaitForSeconds(ArmBack);
-        if(!lefthand.activeSelf){
+        if(!lefthand.activeSelf && state.isAttached(CharacterState.bodyPart.Arm)){
+            Debug.Log("ThrowParts: ArmBackCount");
             pickHand();
+            Destroy(breakHand.gameObject);
+            breakHand = null;
         }
     }
 
