@@ -221,6 +221,7 @@ public class CharacterMovement : MonoBehaviour
         anim.SetBool("Limp", isLimping);
         anim.SetBool("IsGround", isGrounded);
         anim.SetFloat("AirSpeed", rb.velocity.y);
+        anim.SetBool("Panic", isOutControl);
     }
 
     //private void FallToGroundEnter()

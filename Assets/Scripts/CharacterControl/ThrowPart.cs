@@ -54,10 +54,6 @@ public class ThrowPart : MonoBehaviour
     void Update()
     {
         checkFunction();
-        if (myBodyPart.gameObject.activeSelf)
-        {
-            //if (myBodyPart.name == "LeftHand")
-            //{
             Vector2 partPosition = lefthand.transform.position;
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = mousePosition - partPosition;
@@ -69,29 +65,30 @@ public class ThrowPart : MonoBehaviour
             {
                 lefthand.transform.right = -direction;
             }
-                
 
-            
 
-            //else
-            //{
-            //    if (transform.localScale.x > 0)
-            //    {
-            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, -90f);
-            //    }
-            //    else
-            //    {
-            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, 90f);
 
-            //    }
 
-            //}
-            if(Input.GetMouseButtonDown(0))
-            {
-               Callback?.Invoke();
-            }
+        //else
+        //{
+        //    if (transform.localScale.x > 0)
+        //    {
+        //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, -90f);
+        //    }
+        //    else
+        //    {
+        //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, 90f);
+
+        //    }
+
+        //}
+        if(myBodyPart.gameObject.activeSelf && Input.GetMouseButtonDown(0))
+        {
+
+            Callback?.Invoke();
         }
-        if(breakHand != null)
+
+        if (breakHand != null)
             Retract();
 
     }
