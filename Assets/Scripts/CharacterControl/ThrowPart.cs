@@ -18,6 +18,8 @@ public class ThrowPart : MonoBehaviour
 
     [SerializeField]
     private Transform shotPoint;
+    private bool canShootLeg = true;
+    private int legCollisions = 0;
 
     [SerializeField] private GameObject lefthand;
 
@@ -75,9 +77,11 @@ public class ThrowPart : MonoBehaviour
         {
             Callback?.Invoke();
         }
-
         if (breakHand != null)
             Retract();
+        if (Input.GetKeyDown(KeyCode.R)){
+            Reset();
+        }
 
     }
 
@@ -121,12 +125,14 @@ public class ThrowPart : MonoBehaviour
     //Shoot the leg at horizontallly and when the leg hit a collider it freeze and become platfrom to jump on
     private void ShootLeg()
     {
-        breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
-        breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
-        breakLeg.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        state.detach(CharacterState.bodyPart.Leg);
-        myBodyPart.gameObject.SetActive(false);
-        GetComponent<CharacterMovement>().isOnLeg = false;
+        if(canShootLeg){
+            breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+            breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
+            breakLeg.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            state.detach(CharacterState.bodyPart.Leg);
+            myBodyPart.gameObject.SetActive(false);
+            GetComponent<CharacterMovement>().isOnLeg = false;
+        }
     }
 
     //pick up the hand after the player collide with the hand
@@ -197,29 +203,30 @@ public class ThrowPart : MonoBehaviour
             }
 
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.R))
+    private void Reset(){
+        Debug.Log(state.isAttached(CharacterState.bodyPart.Leg));
+        switch (partSelected)
         {
-            switch (partSelected)
-            {
-                case 0: //arm
-                    if(!state.isAttached(CharacterState.bodyPart.Arm)){
-                        pickHand();
-                        Destroy(breakHand.gameObject);
-                        breakHand = null;
-                    }
-                    break;
-                case 1: //head
-                    break;
-                case 2: //leg
-                    if(!state.isAttached(CharacterState.bodyPart.Leg)){
-                        pickUpLeg();
-                    }
-                    break;
-                default:
-                    break;
-            }
-            
+            case 0: //arm
+                if(!state.isAttached(CharacterState.bodyPart.Arm)){
+                    pickHand();
+                    Destroy(breakHand.gameObject);
+                    breakHand = null;
+                }
+                break;
+            case 1: //head
+                break;
+            case 2: //leg
+                if(!state.isAttached(CharacterState.bodyPart.Leg)){
+                    pickUpLeg();
+                    Destroy(breakLeg.gameObject);
+                    breakLeg = null;
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -263,5 +270,15 @@ public class ThrowPart : MonoBehaviour
     private void KillHead()
     {
         Destroy(breakHead.gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision){
+        canShootLeg = false;
+        legCollisions++;
+    }
+    void OnTriggerExit2D(Collider2D collision){
+        legCollisions--;
+        if(legCollisions <= 0)
+            canShootLeg = true;
     }
 }

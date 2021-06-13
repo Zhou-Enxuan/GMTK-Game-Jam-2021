@@ -44,8 +44,6 @@ public class LegBehavior : MonoBehaviour
             Debug.Log("isHit");
             isHit = true;
         }
-
-        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -63,6 +61,5 @@ public class LegBehavior : MonoBehaviour
                 player.GetComponent<CharacterMovement>().isOnLeg = false;
             }
         }
-        
     }
 }
