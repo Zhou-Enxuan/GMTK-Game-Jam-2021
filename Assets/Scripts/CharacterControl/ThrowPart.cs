@@ -54,36 +54,36 @@ public class ThrowPart : MonoBehaviour
         checkFunction();
         if (myBodyPart.gameObject.activeSelf)
         {
-            if (myBodyPart.name == "LeftHand")
+            //if (myBodyPart.name == "LeftHand")
+            //{
+            Vector2 partPosition = lefthand.transform.position;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = mousePosition - partPosition;
+            if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < 45)
             {
-                Vector2 partPosition = myBodyPart.transform.position;
-                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 direction = mousePosition - partPosition;
-                if (transform.localScale.x > 0 && Vector2.Angle(Vector2.right, direction) < 45)
-                {
-                    myBodyPart.right = direction;
-                }
-                else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < 45)
-                {
-                    myBodyPart.right = -direction;
-                }
+                lefthand.transform.right = direction;
+            }
+            else if(transform.localScale.x < 0 && Vector2.Angle(-Vector2.right, direction) < 45)
+            {
+                lefthand.transform.right = -direction;
+            }
                 
 
-            }
+            
 
-            else
-            {
-                if (transform.localScale.x > 0)
-                {
-                    transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, -90f);
-                }
-                else
-                {
-                    transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, 90f);
+            //else
+            //{
+            //    if (transform.localScale.x > 0)
+            //    {
+            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, -90f);
+            //    }
+            //    else
+            //    {
+            //        transform.Find("LeftHand").rotation = Quaternion.Euler(0f, 0f, 90f);
 
-                }
+            //    }
 
-            }
+            //}
             if(Input.GetMouseButtonDown(0))
             {
                Callback?.Invoke();
