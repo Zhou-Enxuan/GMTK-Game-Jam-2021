@@ -356,8 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RootBone: {fileID: 0}
-  m_BoneTransforms:
-  - {fileID: 0}
+  m_BoneTransforms: []
   m_Bounds:
     m_Center: {x: -0.65234625, y: -1.7200913, z: 0.01}
     m_Extent: {x: 1.177005, y: 1.0549998, z: 0}
