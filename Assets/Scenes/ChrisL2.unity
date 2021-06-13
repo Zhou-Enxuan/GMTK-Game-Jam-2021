@@ -9594,9 +9594,9 @@ MonoBehaviour:
   player: {fileID: 1942439208}
   interpolationRatio: 2
   x_min: 0
-  x_max: 0
+  x_max: 55
   y_min: 0
-  y_max: 0
+  y_max: 3
 --- !u!81 &1157511252
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11066,7 +11066,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 976210952d29dc348bef64bbff698fe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
