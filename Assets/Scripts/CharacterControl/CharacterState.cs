@@ -14,6 +14,10 @@ public class CharacterState : MonoBehaviour
 
     private bool[] partAttached;
     public bodyPart partSelected;
+
+    public bool climbing = false;
+    public bool hanging = false;
+    public bool grounded = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +59,7 @@ public class CharacterState : MonoBehaviour
             part = 2;
         else
             part--; 
-            
+
         partSelected = (bodyPart)(part);
         Debug.Log(part);
         player.SendMessage("checkFunction", (int)partSelected);
