@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     //Pause Related
     [SerializeField] private GameObject pauseText;
+    [SerializeField] private GameObject rButttonKey;
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
         }
 
         pauseText.SetActive(false);
+        rButttonKey.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -64,6 +66,22 @@ public class UIManager : MonoBehaviour
     {
         selectingPart();
         CheckPause();
+        CheckReset();
+    }
+
+    private void CheckReset()
+    {
+        state = FindObjectOfType<CharacterState>();
+
+        if (!state.isAttached(CharacterState.bodyPart.Arm) || !state.isAttached(CharacterState.bodyPart.Leg))
+        {
+            rButttonKey.SetActive(true);
+        }
+        else if (state.isAttached(CharacterState.bodyPart.Arm) || state.isAttached(CharacterState.bodyPart.Leg))
+        {
+            rButttonKey.SetActive(false);
+        }
+        
     }
 
     private void CheckPause()
