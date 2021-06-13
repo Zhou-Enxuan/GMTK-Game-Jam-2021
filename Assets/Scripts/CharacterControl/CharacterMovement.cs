@@ -30,12 +30,13 @@ public class CharacterMovement : MonoBehaviour
     [Header("Jump Variables")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float airLinearDrag;
+    public float jumpFreeze = 0;
 
 
     [Header("Ground Collision Variables")]
     [SerializeField] private float grpundRaycastLength;
     [SerializeField] private LayerMask whatIsGround;
-    private bool canJump => Input.GetKeyDown(KeyCode.W) && isGrounded;
+    private bool canJump => Input.GetKeyDown(KeyCode.W) && isGrounded && jumpFreeze <= 0;
     public bool isGrounded;
     public bool isOnLeg;
     [SerializeField] private LayerMask whatIsLeg;
@@ -62,6 +63,11 @@ public class CharacterMovement : MonoBehaviour
         if (!freeze && canJump && !isOutControl)
         {
             Jump();
+        }
+
+        if(jumpFreeze > 0)
+        {
+            jumpFreeze -= Time.deltaTime;
         }
     }
 
@@ -135,6 +141,7 @@ public class CharacterMovement : MonoBehaviour
         Debug.Log("We jumped");
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         anim.SetTrigger("Jump");
+        jumpFreeze = 2;
     }
 
     private void CheckCollision()
