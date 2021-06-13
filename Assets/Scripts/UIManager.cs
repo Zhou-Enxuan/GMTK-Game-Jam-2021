@@ -76,6 +76,10 @@ public class UIManager : MonoBehaviour
     private void CheckReset()
     {
         state = FindObjectOfType<CharacterState>();
+        if (state == null)
+        {
+            return;
+        }
 
         if (!state.isAttached(CharacterState.bodyPart.Arm) || !state.isAttached(CharacterState.bodyPart.Leg))
         {
