@@ -764,7 +764,7 @@ PrefabInstance:
     - target: {fileID: 8792116256654293200, guid: 532dde79bddb640d1a541def2227eb8c,
         type: 3}
       propertyPath: NextScene
-      value: ChrisL3
+      value: MainMenuScene
       objectReference: {fileID: 0}
     - target: {fileID: 8792116256654293202, guid: 532dde79bddb640d1a541def2227eb8c,
         type: 3}
