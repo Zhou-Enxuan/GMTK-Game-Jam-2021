@@ -2592,6 +2592,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4464006402468196797, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
+      propertyPath: HeadBack
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4731643698676534965, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
       propertyPath: respawnPoint
@@ -4542,7 +4547,7 @@ GameObject:
   - component: {fileID: 510053463}
   m_Layer: 0
   m_Name: BoxSet3
-  m_TagString: Untagged
+  m_TagString: Boxes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6186,9 +6191,9 @@ GameObject:
   - component: {fileID: 755345915}
   - component: {fileID: 755345914}
   - component: {fileID: 755345916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IndustrialTile_71
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7321,7 +7326,7 @@ GameObject:
   - component: {fileID: 827996376}
   m_Layer: 0
   m_Name: BoxSet2
-  m_TagString: Untagged
+  m_TagString: Boxes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7668,6 +7673,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3550569974365851797, guid: 5ac8e64b9ca2f47ea9e4f48a3ae8c5e7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 545
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550569974365851797, guid: 5ac8e64b9ca2f47ea9e4f48a3ae8c5e7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -287
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ac8e64b9ca2f47ea9e4f48a3ae8c5e7, type: 3}
 --- !u!1001 &856971937
@@ -7982,7 +7997,7 @@ GameObject:
   - component: {fileID: 926583405}
   m_Layer: 0
   m_Name: BoxSet1
-  m_TagString: Untagged
+  m_TagString: Boxes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9656,7 +9671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157511250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.8, y: 2.9, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
