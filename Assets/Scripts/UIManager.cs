@@ -53,16 +53,6 @@ public class UIManager : MonoBehaviour
             player = GameObject.Find("MyRobot");
             state = player.GetComponent<CharacterState>();
         }
-        /*
-        partChoose = new string[3];
-        partChoose[0] = "Arm";
-        partChoose[1] = "Head";
-        partChoose[2] = "Leg";
-
-        selection = 0;
-        player.SendMessage("checkFunction", selection);
-        */
-
     }
 
     // Update is called once per frame
