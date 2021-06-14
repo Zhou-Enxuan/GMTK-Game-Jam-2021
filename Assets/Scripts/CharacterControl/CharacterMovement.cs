@@ -173,8 +173,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void CheckCollision()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsGround);
-        if(Physics2D.Raycast(transform.position, Vector2.down, grpundRaycastLength, whatIsLeg))
+        isGrounded = Physics2D.Raycast(transform.position * grpundRaycastLength, Vector2.down, grpundRaycastLength, whatIsGround);
+        if(Physics2D.Raycast(transform.position * grpundRaycastLength, Vector2.down, grpundRaycastLength, whatIsLeg))
         {
             isOnLeg = true;
         }
@@ -243,6 +243,7 @@ public class CharacterMovement : MonoBehaviour
         anim.SetBool("IsGround", isGrounded);
         anim.SetFloat("AirSpeed", rb.velocity.y);
         anim.SetBool("Panic", isOutControl);
+        anim.SetFloat("Direction", transform.localScale.x * rb.velocity.x);
     }
 
     //private void FallToGroundEnter()

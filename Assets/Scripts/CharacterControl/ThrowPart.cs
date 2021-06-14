@@ -18,8 +18,7 @@ public class ThrowPart : MonoBehaviour
 
     [SerializeField]
     private Transform shotPoint;
-    private bool canShootLeg = true;
-    private int legCollisions = 0;
+    public bool canShootLeg = true;
 
     [SerializeField] private GameObject lefthand;
 
@@ -132,8 +131,10 @@ public class ThrowPart : MonoBehaviour
     {
         if(canShootLeg){
             breakLeg = Instantiate(partToThrow, shotPoint.position, shotPoint.rotation);
+            //breakLeg.GetComponent<Rigidbody2D>().velocity = breakLeg.transform.right * 20 * (transform.localScale.x * 2);
             breakLeg.GetComponent<Rigidbody2D>().AddForce(breakLeg.transform.right * lunchForce * (transform.localScale.x * 2));
             breakLeg.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), breakLeg.GetComponent<Collider2D>(), true);
             state.detach(CharacterState.bodyPart.Leg);
             myBodyPart.gameObject.SetActive(false);
             GetComponent<CharacterMovement>().isOnLeg = false;
@@ -279,15 +280,5 @@ public class ThrowPart : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 10;
             canRetract = false;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision){
-        canShootLeg = false;
-        legCollisions++;
-    }
-    void OnTriggerExit2D(Collider2D collision){
-        legCollisions--;
-        if(legCollisions <= 0)
-            canShootLeg = true;
     }
 }

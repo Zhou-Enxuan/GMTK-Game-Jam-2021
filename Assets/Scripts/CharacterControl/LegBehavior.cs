@@ -8,25 +8,14 @@ public class LegBehavior : MonoBehaviour
     private Rigidbody2D rb;    
     private bool isHit;
     private GameObject player;
+    private float Counter;
+
     //Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
         player = GameObject.Find("MyRobot");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isHit)
-        {
-            rb.velocity = Vector2.zero;
-            rb.gravityScale = 0;
-            rb.freezeRotation = true;
-            rb.isKinematic = true;
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,6 +32,20 @@ public class LegBehavior : MonoBehaviour
         { 
             Debug.Log("isHit");
             isHit = true;
+            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), this.GetComponent<Collider2D>(), false);
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
+            rb.freezeRotation = true;
+            rb.isKinematic = true;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player") && player.GetComponent<CharacterMovement>().isOnLeg)
+        {
+            Counter += Time.deltaTime;
         }
     }
 
@@ -53,12 +56,18 @@ public class LegBehavior : MonoBehaviour
         
         if (collision.transform.CompareTag("Player"))
         {
-            if (player.GetComponent<CharacterMovement>().isOnLeg)
+            if(Counter <= 0.15f)
+            {
+                Counter = 0;
+            }
+
+            if (player.GetComponent<CharacterMovement>().isOnLeg && Counter > 0.15f)
             {
                 player.GetComponent<ThrowPart>().pickUpLeg();
                 Destroy(this.gameObject);
                 player.GetComponent<ThrowPart>().breakLeg = null;
                 player.GetComponent<CharacterMovement>().isOnLeg = false;
+                Counter = 0;
             }
         }
     }
