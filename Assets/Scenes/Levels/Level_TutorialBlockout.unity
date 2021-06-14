@@ -116139,6 +116139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndustrialTile_64
       objectReference: {fileID: 0}
+    - target: {fileID: 7363556821046393264, guid: c5f8ddb0a4eecb540a7d09eb39cd0722,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7363556821046393265, guid: c5f8ddb0a4eecb540a7d09eb39cd0722,
         type: 3}
       propertyPath: m_Size.x
@@ -116950,6 +116955,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4464006402468196797, guid: 346d8ed8e1452814c95f87eed76d0ea9,
+        type: 3}
+      propertyPath: retractAcce
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4731643698676534965, guid: 346d8ed8e1452814c95f87eed76d0ea9,
         type: 3}
       propertyPath: jumpForce
